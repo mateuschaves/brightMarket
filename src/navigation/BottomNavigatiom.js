@@ -2,8 +2,9 @@ import * as React from 'react';
 import {BottomNavigation, Text} from 'react-native-paper';
 import Products from '~/pages/Products';
 import Scanner from '~/pages/Main';
+import Email from '~/pages/Login/email';
 
-const CartScreen = () => <Products />;
+const CartScreen = () => <Email />;
 
 const ScannerScreen = () => <Scanner />;
 
