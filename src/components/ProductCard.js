@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -49,7 +49,11 @@ export default function ProductCard() {
   const [amount, setAmount] = useState(1);
 
   return (
-    <Swipeable rightButtonWidth={110} rightButtons={rightButtons}>
+    <Swipeable
+      bounceOnMount
+      onRightActionRelease={_ => Vibration.vibrate(100)}
+      rightButtonWidth={110}
+      rightButtons={rightButtons}>
       <View
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
