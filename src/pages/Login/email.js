@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 
 import {TextInput, Button} from 'react-native-paper';
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState('');
   return (
     <View
@@ -54,7 +54,7 @@ export default function Login() {
           activeOpacity={false}
           style={{width: '100%'}}
           mode="contained"
-          onPress={() => console.log('Pressed')}>
+          onPress={() => props.navigation.navigate('BottomNavigatiom')}>
           Continuar
         </Button>
       </View>

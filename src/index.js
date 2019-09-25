@@ -6,10 +6,11 @@ import {Provider} from 'react-redux';
 import store from './store';
 
 import BottomNavigatiom from '~/navigation/BottomNavigatiom';
+import SwitchNavigator from '~/navigation/routes';
 
 const App = () => (
   <Provider store={store}>
-    <BottomNavigatiom />
+    <SwitchNavigator />
   </Provider>
 );
 
