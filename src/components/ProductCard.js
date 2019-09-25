@@ -1,8 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import {View, Text, Image, TouchableHighlight, Vibration} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableHighlight,
+  Vibration,
+  TouchableOpacity,
+} from 'react-native';
 import Swipeable from 'react-native-swipeable-row';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import IconAnt from 'react-native-vector-icons/AntDesign';
 
 const rightButtons = [
   <TouchableHighlight
@@ -38,6 +46,8 @@ const rightButtons = [
   </TouchableHighlight>,
 ];
 export default function ProductCard() {
+  const [amount, setAmount] = useState(1);
+
   return (
     <Swipeable rightButtonWidth={110} rightButtons={rightButtons}>
       <View
@@ -113,12 +123,44 @@ export default function ProductCard() {
               Lanche
             </Text>
           </View>
-          <View style={{flex: 1, flexDirection: 'row-reverse'}}>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <TouchableOpacity onPress={_ => setAmount(amount + 1)}>
+              <IconAnt
+                style={{
+                  justifyContent: 'flex-start',
+                  marginLeft: 10,
+                  marginTop: 10,
+                }}
+                color="green"
+                name="plus"
+                size={15}
+              />
+            </TouchableOpacity>
+
+            <Text style={{fontSize: 15, marginTop: 7, marginLeft: 5}}>
+              {amount}
+            </Text>
+
+            <TouchableOpacity
+              onPress={_ => setAmount(amount > 1 ? amount - 1 : 1)}>
+              <IconAnt
+                style={{
+                  justifyContent: 'flex-start',
+                  marginLeft: 10,
+                  marginTop: 10,
+                }}
+                name="minus"
+                color="#e74c3c"
+                size={15}
+              />
+            </TouchableOpacity>
+
             <Text
               style={{
+                marginLeft: 100,
+                marginTop: 5,
                 color: 'green',
                 fontWeight: '700',
-                marginTop: 15,
                 marginRight: 15,
                 fontSize: 17,
               }}>
