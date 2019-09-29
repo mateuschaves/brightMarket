@@ -4,8 +4,8 @@ import {View, Text} from 'react-native';
 
 import {TextInput, Button} from 'react-native-paper';
 
-export default function Login(props) {
-  const [email, setEmail] = useState('');
+export default function Password(props) {
+  const [password, setPassword] = useState('');
   return (
     <View
       style={{
@@ -19,28 +19,29 @@ export default function Login(props) {
           style={{
             marginBottom: 10,
             color: 'rgb(98,0,238)',
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: '700',
             textAlign: 'center',
           }}>
-          Informe o seu email para começar !
+          Agora escolha uma senha bem segura
         </Text>
         <TextInput
-          keyboardType={'email-address'}
+          keyboardType={'default'}
+          secureTextEntry
           autoCapitalize={'none'}
           autoCorrect={false}
           autoFocus
-          label="Email"
+          label="Senha"
           mode={'outlined'}
-          value={email}
-          onChangeText={text => setEmail(text)}
+          value={password}
+          onChangeText={text => setPassword(text)}
         />
         <Text
           style={{
             color: 'rgb(98,0,238)',
             fontSize: 14,
           }}>
-          Enviaremos informações das suas compras para esse email
+          Não conta ela pra ninguém, beleza ?
         </Text>
       </View>
 
