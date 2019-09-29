@@ -43,6 +43,15 @@ export default function Password(props) {
           }}>
           Não conta ela pra ninguém, beleza ?
         </Text>
+
+        <Text
+          style={{
+            marginTop: 30,
+            color: 'grey',
+            fontSize: 12,
+          }}>
+          Esqueceu sua senha ?
+        </Text>
       </View>
 
       <View
