@@ -30,7 +30,19 @@ export default function planning(props) {
         mode={'outlined'}
         value={target.toString()}
         onChangeText={number => setTarget(number)}
-        render={props => <TextInputMask {...props} type={'money'} />}
+        render={props => (
+          <TextInputMask
+            {...props}
+            type={'money'}
+            options={{
+              precision: 2,
+              separator: ',',
+              delimiter: '.',
+              unit: 'R$ ',
+              suffixUnit: '',
+            }}
+          />
+        )}
       />
       <Text
         style={{
