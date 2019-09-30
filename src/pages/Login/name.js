@@ -61,7 +61,7 @@ export default function Name(props) {
           activeOpacity={false}
           style={{width: '100%'}}
           mode="contained"
-          onPress={() => props.navigation.navigate('BottomNavigatiom')}>
+          onPress={() => props.navigation.navigate('Planning')}>
           Continuar
         </Button>
       </View>
