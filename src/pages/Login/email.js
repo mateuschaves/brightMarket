@@ -55,7 +55,7 @@ export default function Login(props) {
           activeOpacity={false}
           style={{width: '100%'}}
           mode="contained"
-          onPress={() => props.navigation.navigate('BottomNavigatiom')}>
+          onPress={() => props.navigation.navigate('Password')}>
           Continuar
         </Button>
       </View>
