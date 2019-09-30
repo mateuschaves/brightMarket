@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {Button, TextInput} from 'react-native-paper';
+import {TextInputMask} from 'react-native-masked-text';
 
 export default function planning(props) {
   const [target, setTarget] = useState('0');
@@ -29,6 +30,7 @@ export default function planning(props) {
         mode={'outlined'}
         value={target.toString()}
         onChangeText={number => setTarget(number)}
+        render={props => <TextInputMask {...props} type={'money'} />}
       />
       <Text
         style={{
