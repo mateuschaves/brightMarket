@@ -1,13 +1,15 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import {BottomNavigation, Text} from 'react-native-paper';
+import {BottomNavigation} from 'react-native-paper';
 import Products from '~/pages/Products';
 import Scanner from '~/pages/Main';
+import Profile from '~/pages/Profile';
 
 const CartScreen = () => <Products />;
 
 const ScannerScreen = () => <Scanner />;
 
-const ProfileScreen = () => <Text>profile</Text>;
+const ProfileScreen = () => <Profile />;
 
 export default class BottomNavigator extends React.Component {
   state = {
