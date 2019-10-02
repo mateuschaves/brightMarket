@@ -9,7 +9,7 @@ import Colors from '~/constants/Colors';
 
 export default function home(props) {
   return (
-    <View style={{justifyContent: 'center'}}>
+    <View style={{justifyContent: 'center', backgroundColor: '#FFFFFF'}}>
       <Text
         style={{
           textAlign: 'center',
@@ -37,7 +37,7 @@ export default function home(props) {
           fontWeight: '400',
           fontSize: 15,
           color: Colors.primary,
-          marginTop: 65,
+          marginTop: 100,
         }}>
         Defina quanto você quer gastar e acompanhe com facilidade o preço da sua
         compra
@@ -45,23 +45,34 @@ export default function home(props) {
 
       <View
         style={{
-          marginTop: 35,
+          marginTop: 70,
           flexDirection: 'row',
         }}>
         <Button
-          style={{width: '40%', marginLeft: '5%'}}
+          style={{
+            width: '40%',
+            marginLeft: '5%',
+            borderColor: Colors.primary,
+          }}
           activeOpacity={false}
-          mode="contained"
+          mode="outlined"
           onPress={() => props.navigation.navigate('Email')}>
-          Entrar
+          <Text style={{color: Colors.primary, fontWeight: '700'}}>Entrar</Text>
         </Button>
 
         <Button
-          style={{width: '40%', marginLeft: '10%', marginRight: '5%'}}
+          style={{
+            width: '40%',
+            marginLeft: '10%',
+            marginRight: '5%',
+            borderColor: Colors.primary,
+          }}
           activeOpacity={false}
-          mode="contained"
+          mode="outlined"
           onPress={() => props.navigation.navigate('Email')}>
-          Registrar
+          <Text style={{color: Colors.primary, fontWeight: '700'}}>
+            Registrar
+          </Text>
         </Button>
       </View>
     </View>
