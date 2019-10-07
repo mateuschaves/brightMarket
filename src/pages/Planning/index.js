@@ -5,6 +5,8 @@ import LottieView from 'lottie-react-native';
 import {Button, TextInput} from 'react-native-paper';
 import {TextInputMask} from 'react-native-masked-text';
 
+import Colors from '~/constants/Colors';
+
 export default function planning(props) {
   const [target, setTarget] = useState('0');
   return (
@@ -46,7 +48,7 @@ export default function planning(props) {
       />
       <Text
         style={{
-          color: 'rgb(98,0,238)',
+          color: Colors.primary,
           fontSize: 14,
           marginLeft: 20,
         }}>

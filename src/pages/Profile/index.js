@@ -7,7 +7,7 @@ import PurchaseCard from '../../components/PurchaseCard';
 
 export default function profile() {
   return (
-    <View>
+    <View style={{backgroundColor: 'white'}}>
       <LottieView
         style={{
           alignSelf: 'center',

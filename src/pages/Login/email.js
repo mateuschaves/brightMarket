@@ -4,6 +4,8 @@ import {View, Text} from 'react-native';
 
 import {TextInput, Button} from 'react-native-paper';
 
+import Colors from '~/constants/Colors';
+
 export default function Login(props) {
   const [email, setEmail] = useState('');
   return (
@@ -18,7 +20,7 @@ export default function Login(props) {
         <Text
           style={{
             marginBottom: 10,
-            color: 'rgb(98,0,238)',
+            color: Colors.primary,
             fontSize: 20,
             fontWeight: '700',
             textAlign: 'center',
@@ -37,7 +39,7 @@ export default function Login(props) {
         />
         <Text
           style={{
-            color: 'rgb(98,0,238)',
+            color: Colors.primary,
             fontSize: 14,
           }}>
           Enviaremos informações das suas compras para esse email

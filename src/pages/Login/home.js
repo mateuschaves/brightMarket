@@ -7,9 +7,12 @@ import {Button} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import Colors from '~/constants/Colors';
 
+import Modal from '~/components/Modal';
+
 export default function home(props) {
   return (
     <View style={{justifyContent: 'center', backgroundColor: '#FFFFFF'}}>
+      <Modal />
       <Text
         style={{
           textAlign: 'center',
