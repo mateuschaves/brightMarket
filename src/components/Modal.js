@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {Modal, Portal, Text, Button} from 'react-native-paper';
+import {View, Text} from 'react-native';
+import {Modal, Portal, Button} from 'react-native-paper';
 
 import ProductCard from '~/components/ProductCard';
 
@@ -12,21 +12,23 @@ export default function modal() {
       <Modal
         contentContainerStyle={{
           backgroundColor: 'white',
-          height: 200,
+          height: 300,
+          width: '95%',
+          marginLeft: '2.5%',
+          marginRight: '2.5%',
           zIndex: 5,
+          borderRadius: 10,
         }}
         visible={visible}
         onDismiss={_ => setVisible(false)}>
-        <Text style={{alignText: 'center'}}>Produto escaneado !</Text>
         <ProductCard isSwipeable={false} />
-
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
             marginTop: 30,
-            paddingLeft: 30,
-            paddingRight: 30,
+            paddingLeft: 15,
+            paddingRight: 15,
           }}>
           <Button
             activeOpacity={false}
