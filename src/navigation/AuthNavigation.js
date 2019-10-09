@@ -10,7 +10,7 @@ import BottomNavigatiom from '~/navigation/BottomNavigatiom';
 const Routes = createAppContainer(
   createSwitchNavigator(
     {Email, Password, Name, Home, Planning, BottomNavigatiom},
-    {initialRouteName: 'Home', backBehavior: 'initialRoute'},
+    {initialRouteName: 'BottomNavigatiom', backBehavior: 'initialRoute'},
   ),
 );
 

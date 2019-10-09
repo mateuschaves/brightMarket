@@ -45,7 +45,14 @@ const rightButtons = [
     </>
   </TouchableHighlight>,
 ];
-export default function ProductCard({isSwipeable = true, bounceOnMount}) {
+export default function ProductCard({
+  isSwipeable = true,
+  bounceOnMount,
+  name,
+  price,
+  brand,
+  category,
+}) {
   const [amount, setAmount] = useState(1);
 
   if (isSwipeable)
@@ -100,7 +107,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                 marginLeft: 10,
                 fontWeight: '500',
               }}>
-              Biscoito treloso sabor chocolate
+              {name}
             </Text>
             <View style={{flexDirection: 'row', marginTop: 5}}>
               <Text
@@ -109,7 +116,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                   fontSize: 14,
                   color: 'grey',
                 }}>
-                Treloso
+                {brand}
               </Text>
               <Text
                 style={{
@@ -125,7 +132,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                   fontSize: 14,
                   color: 'grey',
                 }}>
-                Lanche
+                {category}
               </Text>
             </View>
             <View style={{flex: 1, flexDirection: 'row'}}>
@@ -175,7 +182,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                   marginRight: 15,
                   fontSize: 17,
                 }}>
-                R$ {(1.3 * amount).toFixed(2)}
+                R$ {(price * amount).toFixed(2)}
               </Text>
             </View>
           </View>
@@ -229,7 +236,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
               marginLeft: 10,
               fontWeight: '500',
             }}>
-            Biscoito treloso sabor chocolate
+            {name}
           </Text>
           <View style={{flexDirection: 'row', marginTop: 5}}>
             <Text
@@ -238,7 +245,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                 fontSize: 14,
                 color: 'grey',
               }}>
-              Treloso
+              {brand}
             </Text>
             <Text
               style={{
@@ -254,7 +261,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                 fontSize: 14,
                 color: 'grey',
               }}>
-              Lanche
+              {category}
             </Text>
           </View>
           <View style={{flex: 1, flexDirection: 'row'}}>
@@ -304,7 +311,7 @@ export default function ProductCard({isSwipeable = true, bounceOnMount}) {
                 marginRight: 15,
                 fontSize: 17,
               }}>
-              R$ {(1.3 * amount).toFixed(2)}
+              R$ {(price * amount).toFixed(2)}
             </Text>
           </View>
         </View>
