@@ -1,3 +1,3 @@
 cd %android_home%\emulator
 
-emulator @DriveTour
+emulator @Projetin

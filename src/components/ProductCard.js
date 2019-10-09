@@ -45,7 +45,7 @@ const rightButtons = [
     </>
   </TouchableHighlight>,
 ];
-export default function ProductCard({isSwipeable = true}) {
+export default function ProductCard({isSwipeable = false}) {
   const [amount, setAmount] = useState(1);
 
   if (isSwipeable)
@@ -129,6 +129,30 @@ export default function ProductCard({isSwipeable = true}) {
               </Text>
             </View>
             <View style={{flex: 1, flexDirection: 'row'}}>
+              <TouchableOpacity
+                onPress={_ => {
+                  if (amount == 1) {
+                    Vibration.vibrate(50);
+                  } else {
+                    setAmount(amount - 1);
+                  }
+                }}>
+                <IconAnt
+                  style={{
+                    justifyContent: 'flex-start',
+                    marginLeft: 10,
+                    marginTop: 10,
+                  }}
+                  name="minus"
+                  color="#e74c3c"
+                  size={15}
+                />
+              </TouchableOpacity>
+
+              <Text style={{fontSize: 15, marginTop: 7, marginLeft: 5}}>
+                {amount}
+              </Text>
+
               <TouchableOpacity onPress={_ => setAmount(amount + 1)}>
                 <IconAnt
                   style={{
@@ -142,34 +166,16 @@ export default function ProductCard({isSwipeable = true}) {
                 />
               </TouchableOpacity>
 
-              <Text style={{fontSize: 15, marginTop: 7, marginLeft: 5}}>
-                {amount}
-              </Text>
-
-              <TouchableOpacity
-                onPress={_ => setAmount(amount > 1 ? amount - 1 : 1)}>
-                <IconAnt
-                  style={{
-                    justifyContent: 'flex-start',
-                    marginLeft: 10,
-                    marginTop: 10,
-                  }}
-                  name="minus"
-                  color="#e74c3c"
-                  size={15}
-                />
-              </TouchableOpacity>
-
               <Text
                 style={{
-                  marginLeft: 100,
+                  marginLeft: 65,
                   marginTop: 5,
                   color: 'green',
                   fontWeight: '700',
                   marginRight: 15,
                   fontSize: 17,
                 }}>
-                R$ 1.30
+                R$ {(1.3 * amount).toFixed(2)}
               </Text>
             </View>
           </View>
@@ -252,6 +258,30 @@ export default function ProductCard({isSwipeable = true}) {
             </Text>
           </View>
           <View style={{flex: 1, flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress={_ => {
+                if (amount == 1) {
+                  Vibration.vibrate(50);
+                } else {
+                  setAmount(amount - 1);
+                }
+              }}>
+              <IconAnt
+                style={{
+                  justifyContent: 'flex-start',
+                  marginLeft: 10,
+                  marginTop: 10,
+                }}
+                name="minus"
+                color="#e74c3c"
+                size={15}
+              />
+            </TouchableOpacity>
+
+            <Text style={{fontSize: 15, marginTop: 7, marginLeft: 5}}>
+              {amount}
+            </Text>
+
             <TouchableOpacity onPress={_ => setAmount(amount + 1)}>
               <IconAnt
                 style={{
@@ -265,24 +295,6 @@ export default function ProductCard({isSwipeable = true}) {
               />
             </TouchableOpacity>
 
-            <Text style={{fontSize: 15, marginTop: 7, marginLeft: 5}}>
-              {amount}
-            </Text>
-
-            <TouchableOpacity
-              onPress={_ => setAmount(amount > 1 ? amount - 1 : 1)}>
-              <IconAnt
-                style={{
-                  justifyContent: 'flex-start',
-                  marginLeft: 10,
-                  marginTop: 10,
-                }}
-                name="minus"
-                color="#e74c3c"
-                size={15}
-              />
-            </TouchableOpacity>
-
             <Text
               style={{
                 marginLeft: 100,
@@ -292,7 +304,7 @@ export default function ProductCard({isSwipeable = true}) {
                 marginRight: 15,
                 fontSize: 17,
               }}>
-              R$ 1.30
+              R$ {(1.3 * amount).toFixed(2)}
             </Text>
           </View>
         </View>

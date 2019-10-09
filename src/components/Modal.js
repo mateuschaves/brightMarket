@@ -1,12 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {Modal, Portal, Button} from 'react-native-paper';
 
 import ProductCard from '~/components/ProductCard';
 
-export default function modal() {
-  const [visible, setVisible] = useState(true);
+export default function modal({show}) {
+  const [visible, setVisible] = useState(show);
+  useEffect(() => {
+    setVisible(show);
+  });
   return (
     <Portal>
       <Modal
