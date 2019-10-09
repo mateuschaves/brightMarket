@@ -6,7 +6,6 @@ import LottieView from 'lottie-react-native';
 import PurchaseCard from '../../components/PurchaseCard';
 
 import Colors from '~/constants/Colors';
-
 export default function profile() {
   return (
     <View style={{backgroundColor: 'white'}}>
@@ -75,16 +74,18 @@ export default function profile() {
         </View>
       </View>
 
-      <ScrollView style={{height: 300, marginTop: 20}}>
-        <PurchaseCard />
-        <PurchaseCard />
-        <PurchaseCard />
-        <PurchaseCard />
-        <PurchaseCard />
-        <PurchaseCard />
-        <PurchaseCard />
-        <PurchaseCard />
-      </ScrollView>
+      <View>
+        <ScrollView style={{height: 300, marginTop: 20}}>
+          <PurchaseCard />
+          <PurchaseCard />
+          <PurchaseCard />
+          <PurchaseCard />
+          <PurchaseCard />
+          <PurchaseCard />
+          <PurchaseCard />
+          <PurchaseCard />
+        </ScrollView>
+      </View>
     </View>
   );
 }

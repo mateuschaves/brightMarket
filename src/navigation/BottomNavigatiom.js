@@ -5,6 +5,8 @@ import Products from '~/pages/Products';
 import Scanner from '~/pages/Main';
 import Profile from '~/pages/Profile';
 
+import Colors from '~/constants/Colors';
+
 const CartScreen = () => <Products />;
 
 const ScannerScreen = () => <Scanner />;
@@ -38,6 +40,7 @@ export default class BottomNavigator extends React.Component {
         barStyle={{
           backgroundColor: 'white',
         }}
+        activeColor={Colors.primary}
         navigationState={this.state}
         onIndexChange={this._handleIndexChange}
         renderScene={this._renderScene}
