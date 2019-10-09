@@ -2,12 +2,16 @@ import React from 'react';
 import {View, StatusBar} from 'react-native';
 
 import ProductCard from '../../components/ProductCard';
+import Colors from '../../constants/Colors';
 
 export default function Products() {
   return (
-    <View style={{flex: 1, marginTop: 15, backgroundColor: '#F2F3F4'}}>
-      <ProductCard isSwipeable />
-      <ProductCard />
+    <View style={{flex: 1}}>
+      <StatusBar backgroundColor={Colors.second} />
+      <View style={{marginTop: 15}}>
+        <ProductCard isSwipeable bounceOnMount={true} />
+        <ProductCard />
+      </View>
     </View>
   );
 }

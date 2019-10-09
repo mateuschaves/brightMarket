@@ -31,7 +31,7 @@ export default function Login(props) {
           keyboardType={'email-address'}
           autoCapitalize={'none'}
           autoCorrect={false}
-          autoFocus
+          autoFocus={true}
           label="Email"
           mode={'outlined'}
           value={email}

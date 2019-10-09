@@ -45,13 +45,13 @@ const rightButtons = [
     </>
   </TouchableHighlight>,
 ];
-export default function ProductCard({isSwipeable = false}) {
+export default function ProductCard({isSwipeable = true, bounceOnMount}) {
   const [amount, setAmount] = useState(1);
 
   if (isSwipeable)
     return (
       <Swipeable
-        bounceOnMount
+        bounceOnMount={bounceOnMount}
         onRightActionRelease={_ => Vibration.vibrate(100)}
         rightButtonWidth={110}
         rightButtons={rightButtons}>

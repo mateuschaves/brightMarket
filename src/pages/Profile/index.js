@@ -5,29 +5,40 @@ import {Button} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import PurchaseCard from '../../components/PurchaseCard';
 
+import Colors from '~/constants/Colors';
+
 export default function profile() {
   return (
     <View style={{backgroundColor: 'white'}}>
-      <LottieView
+      <View
         style={{
-          alignSelf: 'center',
-          width: 350,
-          height: 200,
-          marginTop: 30,
-          marginBottom: 30,
-        }}
-        source={require('../../../assets/profile.json')}
-        autoPlay
-        loop
-      />
-      <Text
-        style={{
-          textAlign: 'center',
-          fontSize: 20,
-          fontWeight: '700',
+          backgroundColor: Colors.second,
+          height: 300,
+          borderBottomRightRadius: 50,
+          borderBottomLeftRadius: 50,
         }}>
-        Mateus Henrique
-      </Text>
+        <LottieView
+          style={{
+            alignSelf: 'center',
+            width: 350,
+            height: 200,
+            marginTop: 30,
+            marginBottom: 30,
+          }}
+          source={require('../../../assets/profile.json')}
+          autoPlay
+          loop
+        />
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 20,
+            fontWeight: '700',
+            color: 'white',
+          }}>
+          Mateus Henrique
+        </Text>
+      </View>
 
       <Button
         activeOpacity={false}

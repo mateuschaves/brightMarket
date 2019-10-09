@@ -1,5 +1,7 @@
 const Colors = {
-  primary: 'rgb(70,130,180)',
+  primary: '#456CCC',
+  second: '#456CCC',
+  third: '#45B3CC',
 };
 
 export default Colors;

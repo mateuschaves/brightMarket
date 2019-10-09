@@ -9,7 +9,8 @@ import Colors from '~/constants/Colors';
 
 export default function home(props) {
   return (
-    <View style={{justifyContent: 'center', backgroundColor: '#FFFFFF'}}>
+    <View
+      style={{justifyContent: 'center', backgroundColor: '#FFFFFF', flex: 1}}>
       <Text
         style={{
           textAlign: 'center',
