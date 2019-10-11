@@ -6,9 +6,89 @@ import Colors from '../../constants/Colors';
 import {isArray} from 'is-what';
 import LottieView from 'lottie-react-native';
 
+import {Placeholder, PlaceholderLine, Shine} from 'rn-placeholder';
+
+const Loader = () => (
+  <>
+    <Placeholder Animation={Shine} style={{left: 20, top: 30}}>
+      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
+        <PlaceholderLine
+          width={85}
+          height={50}
+          style={{borderRadius: 90, margin: 10}}
+        />
+        <PlaceholderLine width={400} style={{marginTop: 10}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
+      </View>
+      {/*
+    <View style={{flexDirection: 'row'}}>
+      <PlaceholderLine width={50} style={{marginRight: 30}} />
+      <PlaceholderLine width={30} />
+    </View> */}
+    </Placeholder>
+
+    <Placeholder Animation={Shine} style={{left: 20, top: 120}}>
+      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
+        <PlaceholderLine
+          width={85}
+          height={50}
+          style={{borderRadius: 90, margin: 10}}
+        />
+        <PlaceholderLine width={400} style={{marginTop: 10}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
+      </View>
+      {/*
+    <View style={{flexDirection: 'row'}}>
+      <PlaceholderLine width={50} style={{marginRight: 30}} />
+      <PlaceholderLine width={30} />
+    </View> */}
+    </Placeholder>
+
+    <Placeholder Animation={Shine} style={{left: 20, top: 210}}>
+      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
+        <PlaceholderLine
+          width={85}
+          height={50}
+          style={{borderRadius: 90, margin: 10}}
+        />
+        <PlaceholderLine width={400} style={{marginTop: 10}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
+      </View>
+      {/*
+    <View style={{flexDirection: 'row'}}>
+      <PlaceholderLine width={50} style={{marginRight: 30}} />
+      <PlaceholderLine width={30} />
+    </View> */}
+    </Placeholder>
+
+    <Placeholder Animation={Shine} style={{left: 20, top: 300}}>
+      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
+        <PlaceholderLine
+          width={85}
+          height={50}
+          style={{borderRadius: 90, margin: 10}}
+        />
+        <PlaceholderLine width={400} style={{marginTop: 10}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
+      </View>
+      {/*
+    <View style={{flexDirection: 'row'}}>
+      <PlaceholderLine width={50} style={{marginRight: 30}} />
+      <PlaceholderLine width={30} />
+    </View> */}
+    </Placeholder>
+  </>
+);
+
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
     const itens = [
       {
         name: 'Sprok maçã',
@@ -100,10 +180,14 @@ export default function Products() {
         backgroundColor: Colors.primary,
         justifyContent: 'flex-start',
       }}>
+      {loading ? (
+        <Loader />
+      ) : (
+        <View style={{marginTop: 20}}>
+          {products.length ? renderProducts() : renderEmptyShop()}
+        </View>
+      )}
       <StatusBar backgroundColor={Colors.second} />
-      <View style={{marginTop: 20}}>
-        {products.length ? renderProducts() : renderEmptyShop()}
-      </View>
     </View>
   );
 }
