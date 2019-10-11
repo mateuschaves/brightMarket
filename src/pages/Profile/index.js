@@ -13,8 +13,7 @@ export default function profile() {
         style={{
           backgroundColor: Colors.second,
           height: 300,
-          borderBottomRightRadius: 50,
-          borderBottomLeftRadius: 50,
+          elevation: 3,
         }}>
         <LottieView
           style={{
