@@ -1,27 +1,14 @@
 import React, {useState} from 'react';
-import {Alert} from 'react-native';
 import {CameraKitCameraScreen} from 'react-native-camera-kit';
 import Modal from '~/components/Modal';
 
-export default function CameraScreen() {
+export default function CameraScreen(props) {
   const [show, setShow] = useState(false);
-
-  function onBottomButtonPressed(event) {
-    const captureImages = JSON.stringify(event.captureImages);
-    Alert.alert(
-      `${event.type} button pressed`,
-      `${captureImages}`,
-      [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-      {cancelable: false},
-    );
-  }
 
   return (
     <>
       <Modal show={show} />
       <CameraKitCameraScreen
-        actions={{rightButtonText: 'Done', leftButtonText: 'Cancel'}}
-        onBottomButtonPressed={event => onBottomButtonPressed(event)}
         flashImages={{
           on: require('../../../img/flashOn.png'),
           off: require('../../../img/flashOff.png'),

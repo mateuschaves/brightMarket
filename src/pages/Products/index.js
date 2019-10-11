@@ -23,18 +23,36 @@ export default function Products() {
         category: 'Fruta',
       },
     ];
-    // setProducts(itens);
+    setProducts(itens);
   }, []);
 
-  function renderProducts(itens) {
-    console.log(itens);
-    if (isArray(itens)) {
-      if (!itens.length) return renderEmptyShop();
-      return itens.map((item, index) => {
+  function renderProducts() {
+    if (isArray(products)) {
+      if (!products.length) return renderEmptyShop();
+      return products.map(({name, brand, price, category}, index) => {
         if (index == 0) {
-          return <ProductCard isSwipeable bounceOnMount={true} key={index} />;
+          return (
+            <ProductCard
+              name={name}
+              brand={brand}
+              price={price}
+              category={category}
+              isSwipeable
+              bounceOnMount={true}
+              key={index}
+            />
+          );
         } else {
-          return <ProductCard isSwipeable key={index} />;
+          return (
+            <ProductCard
+              name={name}
+              brand={brand}
+              price={price}
+              category={category}
+              isSwipeable
+              key={index}
+            />
+          );
         }
       });
     }
@@ -80,11 +98,11 @@ export default function Products() {
       style={{
         flex: 1,
         backgroundColor: Colors.primary,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
       }}>
       <StatusBar backgroundColor={Colors.second} />
       <View style={{marginTop: 20}}>
-        {products.length ? renderProducts(products) : renderEmptyShop()}
+        {products.length ? renderProducts() : renderEmptyShop()}
       </View>
     </View>
   );
