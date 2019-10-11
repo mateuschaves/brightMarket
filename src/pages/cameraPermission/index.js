@@ -50,9 +50,16 @@ export default function cameraPermission(props) {
         );
       }
     } catch (err) {
-      console.log(err);
       Alert.alert('Não conseguimos acesso a sua câmera', `${err}`);
     }
+  }
+
+  function permissionDenied() {
+    Alert.alert(
+      'Não conseguimos acesso a sua câmera',
+      'Permita o acesso a câmera para poder continuar',
+    );
+    props.navigation.navigate('BottomNavigation');
   }
   return (
     <View
@@ -102,7 +109,7 @@ export default function cameraPermission(props) {
           activeOpacity={false}
           style={{width: '40%'}}
           mode="outlined"
-          onPress={() => {}}>
+          onPress={() => permissionDenied()}>
           Melhor não
         </Button>
         <Button

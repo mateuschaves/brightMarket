@@ -2,13 +2,13 @@
 import * as React from 'react';
 import {BottomNavigation} from 'react-native-paper';
 import Products from '~/pages/Products';
-import Scanner from '~/pages/Main';
+import CamNavigation from '~/navigation/CamNavigation';
 import Profile from '~/pages/Profile';
 import Colors from '~/constants/Colors';
 
 const CartScreen = () => <Products />;
 
-const ScannerScreen = () => <Scanner />;
+const ScannerScreen = () => <CamNavigation />;
 
 const ProfileScreen = () => <Profile />;
 
