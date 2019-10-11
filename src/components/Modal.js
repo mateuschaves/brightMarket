@@ -4,12 +4,13 @@ import {View, Text} from 'react-native';
 import {Modal, Portal, Button} from 'react-native-paper';
 
 import ProductCard from '~/components/ProductCard';
+import Colors from '~/constants/Colors';
 
 export default function modal({show}) {
   const [visible, setVisible] = useState(show);
   useEffect(() => {
     setVisible(show);
-  });
+  }, []);
   return (
     <Portal>
       <Modal
@@ -24,7 +25,23 @@ export default function modal({show}) {
         }}
         visible={visible}
         onDismiss={_ => setVisible(false)}>
-        <ProductCard isSwipeable={false} />
+        <Text
+          style={{
+            textAlign: 'center',
+            color: Colors.primary,
+            fontWeight: '700',
+            fontSize: 18,
+            marginBottom: 30,
+          }}>
+          Produto encontrado !
+        </Text>
+        <ProductCard
+          name={'Miojo'}
+          brand={'treloso'}
+          category={'Lanche'}
+          price={'1.40'}
+          isSwipeable={false}
+        />
         <View
           style={{
             flexDirection: 'row',
@@ -37,7 +54,7 @@ export default function modal({show}) {
             activeOpacity={false}
             style={{width: 140}}
             mode="contained"
-            onPress={() => {}}>
+            onPress={() => setVisible(false)}>
             Adicionar
           </Button>
 
@@ -45,7 +62,7 @@ export default function modal({show}) {
             activeOpacity={false}
             style={{width: 140}}
             mode="outlined"
-            onPress={() => {}}>
+            onPress={() => setVisible(false)}>
             Cancelar
           </Button>
         </View>
