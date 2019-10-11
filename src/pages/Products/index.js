@@ -8,6 +8,9 @@ import LottieView from 'lottie-react-native';
 
 import {Placeholder, PlaceholderLine, Shine} from 'rn-placeholder';
 
+import PurchaseSummary from '~/components/PurchaseSummary';
+import {ScrollView} from 'react-native-gesture-handler';
+
 const Loader = () => (
   <>
     <Placeholder Animation={Shine} style={{left: 20, top: 30}}>
@@ -102,6 +105,72 @@ export default function Products() {
         price: 3.1,
         category: 'Fruta',
       },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
     ];
     setProducts(itens);
   }, []);
@@ -178,15 +247,23 @@ export default function Products() {
       style={{
         flex: 1,
         backgroundColor: Colors.primary,
-        justifyContent: 'flex-start',
       }}>
       {loading ? (
         <Loader />
       ) : (
-        <View style={{marginTop: 20}}>
+        <ScrollView style={{marginTop: 20, height: '30%'}}>
           {products.length ? renderProducts() : renderEmptyShop()}
-        </View>
+        </ScrollView>
       )}
+      <View
+        style={{
+          backgroundColor: Colors.second,
+          flexDirection: 'row',
+          alignSelf: 'flex-end',
+          height: 30,
+        }}>
+        <PurchaseSummary />
+      </View>
       <StatusBar backgroundColor={Colors.second} />
     </View>
   );
