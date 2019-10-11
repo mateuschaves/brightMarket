@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, StatusBar, Text} from 'react-native';
+import {View, StatusBar, Text, Animated} from 'react-native';
 
 import ProductCard from '../../components/ProductCard';
 import Colors from '../../constants/Colors';
@@ -24,11 +24,6 @@ const Loader = () => (
         <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
         <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
       </View>
-      {/*
-    <View style={{flexDirection: 'row'}}>
-      <PlaceholderLine width={50} style={{marginRight: 30}} />
-      <PlaceholderLine width={30} />
-    </View> */}
     </Placeholder>
 
     <Placeholder Animation={Shine} style={{left: 20, top: 120}}>
@@ -42,11 +37,6 @@ const Loader = () => (
         <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
         <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
       </View>
-      {/*
-    <View style={{flexDirection: 'row'}}>
-      <PlaceholderLine width={50} style={{marginRight: 30}} />
-      <PlaceholderLine width={30} />
-    </View> */}
     </Placeholder>
 
     <Placeholder Animation={Shine} style={{left: 20, top: 210}}>
@@ -60,11 +50,6 @@ const Loader = () => (
         <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
         <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
       </View>
-      {/*
-    <View style={{flexDirection: 'row'}}>
-      <PlaceholderLine width={50} style={{marginRight: 30}} />
-      <PlaceholderLine width={30} />
-    </View> */}
     </Placeholder>
 
     <Placeholder Animation={Shine} style={{left: 20, top: 300}}>
@@ -78,20 +63,16 @@ const Loader = () => (
         <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
         <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
       </View>
-      {/*
-    <View style={{flexDirection: 'row'}}>
-      <PlaceholderLine width={50} style={{marginRight: 30}} />
-      <PlaceholderLine width={30} />
-    </View> */}
     </Placeholder>
   </>
 );
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
+  const [animationPosition, setAnimationPosition] = useState(1);
   useEffect(() => {
-    setTimeout(() => setLoading(false), 3000);
     const itens = [
       {
         name: 'Sprok maçã',
@@ -251,19 +232,31 @@ export default function Products() {
       {loading ? (
         <Loader />
       ) : (
-        <ScrollView style={{marginTop: 20, height: '30%'}}>
+        <ScrollView style={{marginTop: 20, marginBottom: 0}}>
           {products.length ? renderProducts() : renderEmptyShop()}
         </ScrollView>
       )}
       <View
-        style={{
-          backgroundColor: Colors.second,
-          flexDirection: 'row',
-          alignSelf: 'flex-end',
-          height: 30,
+        onTouchStart={() => {
+          setAnimationPosition(animationPosition ? 0 : 1);
+          Animated.timing(heightSummary, {
+            toValue: animationPosition ? 40 : 200,
+            duration: 800,
+          }).start();
         }}>
-        <PurchaseSummary />
+        <Animated.View
+          style={{
+            backgroundColor: Colors.second,
+            flexDirection: 'row',
+            alignSelf: 'flex-end',
+            height: heightSummary,
+          }}>
+          <PurchaseSummary
+            icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
+          />
+        </Animated.View>
       </View>
+
       <StatusBar backgroundColor={Colors.second} />
     </View>
   );
