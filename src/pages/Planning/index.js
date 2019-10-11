@@ -10,7 +10,7 @@ import Colors from '~/constants/Colors';
 export default function planning(props) {
   const [target, setTarget] = useState('0');
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <LottieView
         style={{
           alignSelf: 'center',
@@ -23,7 +23,12 @@ export default function planning(props) {
         loop
       />
       <TextInput
-        style={{marginLeft: 20, marginRight: 20, marginTop: 50}}
+        style={{
+          marginLeft: 20,
+          marginRight: 20,
+          marginTop: 50,
+          backgroundColor: 'white',
+        }}
         keyboardType={'decimal-pad'}
         autoCapitalize={'none'}
         autoCorrect={false}

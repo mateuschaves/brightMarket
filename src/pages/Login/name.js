@@ -12,12 +12,12 @@ export default function Name(props) {
   return (
     <View
       style={{
-        marginTop: 50,
         flex: 1,
         width: '100%',
         height: '100%',
+        backgroundColor: 'white',
       }}>
-      <View style={{margin: 20, marginTop: 100}}>
+      <View style={{margin: 20, marginTop: 150}}>
         <Text
           style={{
             marginBottom: 10,
@@ -31,6 +31,7 @@ export default function Name(props) {
         <TextInput
           style={{
             marginBottom: 20,
+            backgroundColor: 'white',
           }}
           keyboardType={'ascii-capable'}
           autoCapitalize={'none'}
@@ -42,6 +43,7 @@ export default function Name(props) {
           onChangeText={text => setName(text)}
         />
         <TextInput
+          style={{backgroundColor: 'white'}}
           keyboardType={'ascii-capable'}
           autoCapitalize={'none'}
           autoCorrect={false}

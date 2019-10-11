@@ -10,12 +10,12 @@ export default function Password(props) {
   return (
     <View
       style={{
-        marginTop: 50,
         flex: 1,
         width: '100%',
         height: '100%',
+        backgroundColor: 'white',
       }}>
-      <View style={{margin: 20, marginTop: 100}}>
+      <View style={{margin: 20, marginTop: 150}}>
         <Text
           style={{
             marginBottom: 10,
@@ -27,6 +27,7 @@ export default function Password(props) {
           Agora escolha uma senha bem segura
         </Text>
         <TextInput
+          style={{backgroundColor: 'white'}}
           keyboardType={'default'}
           secureTextEntry
           autoCapitalize={'none'}
