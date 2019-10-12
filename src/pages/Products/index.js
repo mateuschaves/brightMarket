@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
 import {View, StatusBar, Text, Animated} from 'react-native';
 
@@ -5,11 +6,11 @@ import ProductCard from '../../components/ProductCard';
 import Colors from '../../constants/Colors';
 import {isArray} from 'is-what';
 import LottieView from 'lottie-react-native';
-
 import {Placeholder, PlaceholderLine, Shine} from 'rn-placeholder';
-
-import PurchaseSummary from '~/components/PurchaseSummary';
 import {ScrollView} from 'react-native-gesture-handler';
+
+import ProductSearch from '~/components/ProductSearch';
+import PurchaseSummary from '~/components/PurchaseSummary';
 
 const Loader = () => (
   <>
@@ -331,10 +332,11 @@ export default function Products() {
         flex: 1,
         backgroundColor: Colors.primary,
       }}>
+      <ProductSearch />
       {loading ? (
         <Loader />
       ) : (
-        <ScrollView style={{marginTop: 20, marginBottom: 0}}>
+        <ScrollView style={{marginTop: 15, marginBottom: 0}}>
           {products.length ? renderProducts() : renderEmptyShop()}
         </ScrollView>
       )}

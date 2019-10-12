@@ -66,9 +66,9 @@ export default function ProductCard({
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             flexDirection: 'row',
-            margin: 15,
-            marginBottom: 5,
-            marginTop: 5,
+            marginLeft: 15,
+            marginRight: 15,
+            marginBottom: 10,
             borderRadius: 10,
             borderColor: '#0000',
             backgroundColor: '#FDFEFE',
