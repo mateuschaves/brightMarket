@@ -9,7 +9,6 @@ export default function PurchaseSummary(props) {
     <View
       style={{
         flex: 1,
-
         margin: 5,
       }}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -17,14 +16,14 @@ export default function PurchaseSummary(props) {
           style={{
             fontWeight: '700',
             fontSize: 18,
-            color: 'white',
+            color: Colors.primary,
             marginLeft: 15,
           }}>
           Total
         </Text>
         <Icon
           name={props.icon}
-          color="white"
+          color={Colors.primary}
           size={20}
           style={{marginLeft: 40}}
         />
@@ -32,7 +31,7 @@ export default function PurchaseSummary(props) {
           style={{
             fontWeight: '700',
             fontSize: 18,
-            color: 'white',
+            color: Colors.primary,
             marginRight: 15,
           }}>
           R$ 157.87
@@ -45,11 +44,11 @@ export default function PurchaseSummary(props) {
           justifyContent: 'space-between',
           margin: 15,
         }}>
-        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
           Planejado
         </Text>
 
-        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
           R$ 201.50
         </Text>
       </View>
@@ -60,11 +59,11 @@ export default function PurchaseSummary(props) {
           marginLeft: 15,
           marginRight: 15,
         }}>
-        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
           Restante
         </Text>
 
-        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
           R$ 43.63
         </Text>
       </View>
@@ -74,13 +73,15 @@ export default function PurchaseSummary(props) {
           margin: 30,
           width: 200,
           marginLeft: '5%',
-          borderColor: 'white',
+          borderColor: Colors.primary,
           alignSelf: 'center',
         }}
         activeOpacity={false}
         mode="outlined"
         onPress={() => {}}>
-        <Text style={{color: 'white', fontWeight: '700'}}>Finalizar</Text>
+        <Text style={{color: Colors.primary, fontWeight: '700'}}>
+          Finalizar
+        </Text>
       </Button>
     </View>
   );

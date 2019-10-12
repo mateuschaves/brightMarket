@@ -71,7 +71,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
-  const [animationPosition, setAnimationPosition] = useState(1);
+  const [animationPosition, setAnimationPosition] = useState(0);
   useEffect(() => {
     const itens = [
       {
@@ -97,6 +97,108 @@ export default function Products() {
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Sprok maçã',
+        brand: 'Irmão do jorel',
+        price: 4.5,
+        category: 'Bebida',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Abacate',
+        brand: 'Irmão do jorel',
+        price: 3.1,
+        category: 'Fruta',
+      },
+      {
+        name: 'Sprok maçã',
+        brand: 'Irmão do jorel',
+        price: 4.5,
+        category: 'Bebida',
       },
       {
         name: 'Abacate',
@@ -239,17 +341,20 @@ export default function Products() {
       <View
         onTouchStart={() => {
           setAnimationPosition(animationPosition ? 0 : 1);
-          Animated.timing(heightSummary, {
+          Animated.spring(heightSummary, {
             toValue: animationPosition ? 40 : 200,
-            duration: 800,
+            duration: 600,
           }).start();
         }}>
         <Animated.View
           style={{
-            backgroundColor: Colors.second,
+            backgroundColor: 'white',
             flexDirection: 'row',
             alignSelf: 'flex-end',
             height: heightSummary,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            elevation: 10,
           }}>
           <PurchaseSummary
             icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
