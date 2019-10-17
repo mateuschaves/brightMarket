@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState, useReducer} from 'react';
 import {View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '~/constants/Colors';
 
 export default function PurchaseSummary(props) {
+  const [visible, setVisible] = useState(false);
   return (
     <View
       style={{
@@ -78,7 +79,7 @@ export default function PurchaseSummary(props) {
         }}
         activeOpacity={false}
         mode="outlined"
-        onPress={() => {}}>
+        onPress={() => setVisible(true)}>
         <Text style={{color: Colors.primary, fontWeight: '700'}}>
           Finalizar
         </Text>

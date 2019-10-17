@@ -11,6 +11,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 
 import ProductSearch from '~/components/ProductSearch';
 import PurchaseSummary from '~/components/PurchaseSummary';
+import CheckouModal from '~/components/CheckouModal';
 
 const Loader = () => (
   <>
@@ -73,6 +74,7 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
   const [animationPosition, setAnimationPosition] = useState(0);
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
     const itens = [
       {
@@ -330,8 +332,8 @@ export default function Products() {
     <View
       style={{
         flex: 1,
-        backgroundColor: Colors.primary,
       }}>
+      <CheckouModal show={visible} />
       <ProductSearch />
       {loading ? (
         <Loader />
@@ -354,8 +356,8 @@ export default function Products() {
             flexDirection: 'row',
             alignSelf: 'flex-end',
             height: heightSummary,
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
+            borderTopLeftRadius: animationPosition ? 10 : 0,
+            borderTopRightRadius: animationPosition ? 10 : 0,
             elevation: 10,
           }}>
           <PurchaseSummary

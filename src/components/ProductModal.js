@@ -6,7 +6,7 @@ import {Modal, Portal, Button} from 'react-native-paper';
 import ProductCard from '~/components/ProductCard';
 import Colors from '~/constants/Colors';
 
-export default function modal({show}) {
+export default function ProductModal({show}) {
   const [visible, setVisible] = useState(show);
   useEffect(() => {
     setVisible(show);

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {CameraKitCameraScreen} from 'react-native-camera-kit';
-import Modal from '~/components/Modal';
+import Modal from '~/components/ProductModal';
 
 export default function CameraScreen(props) {
   const [show, setShow] = useState(false);

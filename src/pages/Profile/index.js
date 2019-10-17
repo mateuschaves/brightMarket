@@ -8,7 +8,7 @@ import PurchaseCard from '../../components/PurchaseCard';
 import Colors from '~/constants/Colors';
 export default function profile() {
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <ScrollView style={{backgroundColor: 'white'}}>
       <View
         style={{
           backgroundColor: Colors.second,
@@ -57,7 +57,8 @@ export default function profile() {
           justifyContent: 'space-between',
           marginLeft: 50,
           marginRight: 50,
-          marginTop: 20,
+          marginTop: 30,
+          marginBottom: 30,
         }}>
         <View style={{alignContent: 'center', alignItems: 'center'}}>
           <Text style={{fontWeight: '700'}}>22</Text>
@@ -73,18 +74,14 @@ export default function profile() {
         </View>
       </View>
 
-      <View>
-        <ScrollView style={{height: 300, marginTop: 20}}>
-          <PurchaseCard />
-          <PurchaseCard />
-          <PurchaseCard />
-          <PurchaseCard />
-          <PurchaseCard />
-          <PurchaseCard />
-          <PurchaseCard />
-          <PurchaseCard />
-        </ScrollView>
-      </View>
-    </View>
+      <PurchaseCard />
+      <PurchaseCard />
+      <PurchaseCard />
+      <PurchaseCard />
+      <PurchaseCard />
+      <PurchaseCard />
+      <PurchaseCard />
+      <PurchaseCard />
+    </ScrollView>
   );
 }

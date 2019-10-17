@@ -80,7 +80,7 @@ export default function ProductCard({
             },
             shadowOpacity: 0.7,
             shadowRadius: 45,
-            elevation: 3,
+            elevation: 1,
             justifyContent: 'flex-start',
             alignItems: 'center',
           }}>
@@ -199,7 +199,7 @@ export default function ProductCard({
           marginBottom: 5,
           marginTop: 5,
           borderRadius: 10,
-          borderColor: '#0000',
+          borderColor: 'black',
           backgroundColor: '#FDFEFE',
           height: 100,
           shadowColor: '#000',
@@ -209,7 +209,7 @@ export default function ProductCard({
           },
           shadowOpacity: 0.7,
           shadowRadius: 45,
-          elevation: 3,
+          elevation: 1,
           justifyContent: 'flex-start',
           alignItems: 'center',
         }}>
