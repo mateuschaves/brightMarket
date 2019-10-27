@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {View, StatusBar, Text, Animated} from 'react-native';
+import {View, StatusBar, Text, Animated, RefreshControl} from 'react-native';
 
 import ProductCard from '../../components/ProductCard';
 import Colors from '../../constants/Colors';
@@ -75,6 +75,22 @@ export default function Products() {
   const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
   const [animationPosition, setAnimationPosition] = useState(0);
   const [visible, setVisible] = useState(true);
+
+  const [refreshing, setRefreshing] = useState(false);
+
+  function wait(timeout) {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
+
   useEffect(() => {
     const itens = [
       {
@@ -338,7 +354,11 @@ export default function Products() {
       {loading ? (
         <Loader />
       ) : (
-        <ScrollView style={{marginTop: 15, marginBottom: 0}}>
+        <ScrollView 
+         refreshControl={
+           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }  
+          style={{marginTop: 15, marginBottom: 0}}>
           {products.length ? renderProducts() : renderEmptyShop()}
         </ScrollView>
       )}
