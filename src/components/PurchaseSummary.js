@@ -17,14 +17,14 @@ export default function PurchaseSummary(props) {
           style={{
             fontWeight: '700',
             fontSize: 18,
-            color: Colors.primary,
+            color: 'white',
             marginLeft: 15,
           }}>
           Total
         </Text>
         <Icon
           name={props.icon}
-          color={Colors.primary}
+          color={'white'}
           size={20}
           style={{marginLeft: 40}}
         />
@@ -32,7 +32,7 @@ export default function PurchaseSummary(props) {
           style={{
             fontWeight: '700',
             fontSize: 18,
-            color: Colors.primary,
+            color: 'white',
             marginRight: 15,
           }}>
           R$ 157.87
@@ -45,11 +45,11 @@ export default function PurchaseSummary(props) {
           justifyContent: 'space-between',
           margin: 15,
         }}>
-        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
           Planejado
         </Text>
 
-        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
           R$ 201.50
         </Text>
       </View>
@@ -60,11 +60,11 @@ export default function PurchaseSummary(props) {
           marginLeft: 15,
           marginRight: 15,
         }}>
-        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
           Restante
         </Text>
 
-        <Text style={{color: Colors.primary, fontSize: 18, fontWeight: '600'}}>
+        <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
           R$ 43.63
         </Text>
       </View>
@@ -74,13 +74,14 @@ export default function PurchaseSummary(props) {
           margin: 30,
           width: 200,
           marginLeft: '5%',
-          borderColor: Colors.primary,
+          borderColor: 'white',
           alignSelf: 'center',
+          borderWidth: 1
         }}
         activeOpacity={false}
         mode="outlined"
         onPress={() => setVisible(true)}>
-        <Text style={{color: Colors.primary, fontWeight: '700'}}>
+        <Text style={{color: 'white', fontWeight: '700'}}>
           Finalizar
         </Text>
       </Button>

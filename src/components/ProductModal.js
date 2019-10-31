@@ -10,7 +10,7 @@ export default function ProductModal({show}) {
   const [visible, setVisible] = useState(show);
   useEffect(() => {
     setVisible(show);
-  }, []);
+  }, [show]);
   return (
     <Portal>
       <Modal

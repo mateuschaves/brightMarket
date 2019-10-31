@@ -20,50 +20,11 @@ const Loader = () => (
         <PlaceholderLine
           width={85}
           height={50}
-          style={{borderRadius: 90, margin: 10}}
+          style={{borderRadius: 90, margin: 10, backgroundColor: 'lightgrey'}}
         />
-        <PlaceholderLine width={400} style={{marginTop: 10}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
-      </View>
-    </Placeholder>
-
-    <Placeholder Animation={Shine} style={{left: 20, top: 120}}>
-      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
-        <PlaceholderLine
-          width={85}
-          height={50}
-          style={{borderRadius: 90, margin: 10}}
-        />
-        <PlaceholderLine width={400} style={{marginTop: 10}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
-      </View>
-    </Placeholder>
-
-    <Placeholder Animation={Shine} style={{left: 20, top: 210}}>
-      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
-        <PlaceholderLine
-          width={85}
-          height={50}
-          style={{borderRadius: 90, margin: 10}}
-        />
-        <PlaceholderLine width={400} style={{marginTop: 10}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
-      </View>
-    </Placeholder>
-
-    <Placeholder Animation={Shine} style={{left: 20, top: 300}}>
-      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
-        <PlaceholderLine
-          width={85}
-          height={50}
-          style={{borderRadius: 90, margin: 10}}
-        />
-        <PlaceholderLine width={400} style={{marginTop: 10}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 240}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 195}} />
+        <PlaceholderLine width={400} style={{marginTop: 10,  backgroundColor: 'lightgrey'}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 240,  backgroundColor: 'lightgrey'}} />
+        <PlaceholderLine width={150} style={{marginTop: 35, right: 195,  backgroundColor: 'lightgrey'}} />
       </View>
     </Placeholder>
   </>
@@ -71,10 +32,10 @@ const Loader = () => (
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
   const [animationPosition, setAnimationPosition] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -92,6 +53,10 @@ export default function Products() {
 
 
   useEffect(() => {
+    setTimeout(() => 
+      setLoading(false),
+      2000
+    )
     const itens = [
       {
         name: 'Sprok maçã',
@@ -218,61 +183,7 @@ export default function Products() {
         brand: 'Irmão do jorel',
         price: 4.5,
         category: 'Bebida',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
+      }
     ];
     setProducts(itens);
   }, []);
@@ -311,11 +222,11 @@ export default function Products() {
 
   function renderEmptyShop() {
     return (
-      <View>
+      <View style={{marginTop: 150}}>
         <Text
           style={{
             textAlign: 'center',
-            fontSize: 20,
+            fontSize: 25,
             fontWeight: '700',
             color: 'white',
           }}>
@@ -325,7 +236,7 @@ export default function Products() {
           style={{
             marginTop: 20,
             textAlign: 'center',
-            fontSize: 14,
+            fontSize: 17,
             fontWeight: '400',
             color: 'white',
           }}>
@@ -348,15 +259,25 @@ export default function Products() {
     <View
       style={{
         flex: 1,
+        backgroundColor: !products.length ? Colors.primary : 'rgb(246, 246, 246)'
       }}>
       <CheckouModal show={visible} />
-      <ProductSearch />
+      {products.length ? <ProductSearch /> : <></>}
       {loading ? (
+        <View style={{flex: 1, justifyContent: 'space-between'}}>
         <Loader />
+        <Loader />
+        <Loader />
+        <Loader />
+        <Loader />
+        <Loader />
+        <Loader />
+
+        </View>
       ) : (
         <ScrollView 
          refreshControl={
-           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+           <RefreshControl refreshing={refreshing} onRefresh={onRefresh}  titleColor={Colors.primary}/>
           }  
           style={{marginTop: 15, marginBottom: 0}}>
           {products.length ? renderProducts() : renderEmptyShop()}
@@ -372,21 +293,25 @@ export default function Products() {
         }}>
         <Animated.View
           style={{
-            backgroundColor: 'white',
+            backgroundColor: Colors.primary,
             flexDirection: 'row',
             alignSelf: 'flex-end',
             height: heightSummary,
             borderTopLeftRadius: animationPosition ? 10 : 0,
             borderTopRightRadius: animationPosition ? 10 : 0,
             elevation: 10,
+            borderColor: 'black',
+            borderBottomWidth: 0.5
           }}>
-          <PurchaseSummary
+
+            {products.length && !loading ?  <PurchaseSummary
             icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
-          />
+          />  : <></>}
+         
         </Animated.View>
       </View>
 
-      <StatusBar backgroundColor={Colors.second} />
+      <StatusBar backgroundColor={Colors.primary} />
     </View>
   );
 }

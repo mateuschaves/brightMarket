@@ -11,7 +11,7 @@ export default function profile() {
     <ScrollView style={{backgroundColor: 'white'}}>
       <View
         style={{
-          backgroundColor: Colors.second,
+          backgroundColor: Colors.primary,
           height: 300,
           elevation: 3,
         }}>
