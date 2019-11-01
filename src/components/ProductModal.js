@@ -17,7 +17,7 @@ import {bindActionCreators} from 'redux';
 
 import {hideModal} from '~/store/actions/scannedProductModal';
 
-function ProductModal({modalVisible, hideModal}) {
+function ProductModal({modalVisible, hideModal, scannedProduct}) {
   return (
     <Portal>
       <Modal
@@ -43,10 +43,10 @@ function ProductModal({modalVisible, hideModal}) {
           Produto encontrado !
         </Text>
         <ProductCard
-          name={'Miojo'}
-          brand={'treloso'}
-          category={'Lanche'}
-          price={'1.40'}
+          name={scannedProduct.name}
+          brand={scannedProduct.brand}
+          category={scannedProduct.category}
+          price={scannedProduct.price}
           isSwipeable={false}
         />
         <View
