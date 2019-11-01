@@ -2,6 +2,7 @@ import {HIDE_MODAL, SET_SCANNED_PRODUCT} from '../actions/scannedProductModal';
 
 const INITIAL_STATE = {
   scannedProduct: {
+    id: undefined,
     name: undefined,
     brand: undefined,
     price: undefined,

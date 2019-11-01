@@ -22,9 +22,18 @@ const Loader = () => (
           height={50}
           style={{borderRadius: 90, margin: 10, backgroundColor: 'lightgrey'}}
         />
-        <PlaceholderLine width={400} style={{marginTop: 10,  backgroundColor: 'lightgrey'}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 240,  backgroundColor: 'lightgrey'}} />
-        <PlaceholderLine width={150} style={{marginTop: 35, right: 195,  backgroundColor: 'lightgrey'}} />
+        <PlaceholderLine
+          width={400}
+          style={{marginTop: 10, backgroundColor: 'lightgrey'}}
+        />
+        <PlaceholderLine
+          width={150}
+          style={{marginTop: 35, right: 240, backgroundColor: 'lightgrey'}}
+        />
+        <PlaceholderLine
+          width={150}
+          style={{marginTop: 35, right: 195, backgroundColor: 'lightgrey'}}
+        />
       </View>
     </Placeholder>
   </>
@@ -51,139 +60,156 @@ export default function Products() {
     wait(2000).then(() => setRefreshing(false));
   }, [refreshing]);
 
-
   useEffect(() => {
-    setTimeout(() => 
-      setLoading(false),
-      2000
-    )
+    setTimeout(() => setLoading(false), 2000);
     const itens = [
       {
+        id: 1,
         name: 'Sprok maçã',
         brand: 'Irmão do jorel',
         price: 4.5,
         category: 'Bebida',
       },
       {
+        id: 2,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 3,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 4,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 5,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 6,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 7,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 8,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 9,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 10,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 11,
         name: 'Sprok maçã',
         brand: 'Irmão do jorel',
         price: 4.5,
         category: 'Bebida',
       },
       {
+        id: 12,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Abacate',
         brand: 'Irmão do jorel',
         price: 3.1,
         category: 'Fruta',
       },
       {
+        id: 13,
         name: 'Sprok maçã',
         brand: 'Irmão do jorel',
         price: 4.5,
         category: 'Bebida',
-      }
+      },
     ];
     setProducts(itens);
   }, []);
@@ -259,26 +285,31 @@ export default function Products() {
     <View
       style={{
         flex: 1,
-        backgroundColor: !products.length ? Colors.primary : 'rgb(246, 246, 246)'
+        backgroundColor: !products.length
+          ? Colors.primary
+          : 'rgb(246, 246, 246)',
       }}>
       <CheckouModal show={visible} />
       {products.length ? <ProductSearch /> : <></>}
       {loading ? (
         <View style={{flex: 1, justifyContent: 'space-between'}}>
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-
+          <Loader />
+          <Loader />
+          <Loader />
+          <Loader />
+          <Loader />
+          <Loader />
+          <Loader />
         </View>
       ) : (
-        <ScrollView 
-         refreshControl={
-           <RefreshControl refreshing={refreshing} onRefresh={onRefresh}  titleColor={Colors.primary}/>
-          }  
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              titleColor={Colors.primary}
+            />
+          }
           style={{marginTop: 15, marginBottom: 0}}>
           {products.length ? renderProducts() : renderEmptyShop()}
         </ScrollView>
@@ -301,13 +332,15 @@ export default function Products() {
             borderTopRightRadius: animationPosition ? 10 : 0,
             elevation: 10,
             borderColor: 'black',
-            borderBottomWidth: 0.5
+            borderBottomWidth: 0.5,
           }}>
-
-            {products.length && !loading ?  <PurchaseSummary
-            icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
-          />  : <></>}
-         
+          {products.length && !loading ? (
+            <PurchaseSummary
+              icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
+            />
+          ) : (
+            <></>
+          )}
         </Animated.View>
       </View>
 
