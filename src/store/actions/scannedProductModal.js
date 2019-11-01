@@ -6,7 +6,6 @@ export const setScannedProduct = scannedProduct => ({
   payload: {scannedProduct},
 });
 
-export const hideModal = hideModal => ({
+export const hideModal = _ => ({
   type: HIDE_MODAL,
-  payload: {hideModal},
 });

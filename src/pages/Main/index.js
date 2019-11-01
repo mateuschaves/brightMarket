@@ -31,6 +31,7 @@ function CameraScreen({setScannedProduct, modalVisible}) {
         onReadCode={_ =>
           !modalVisible &&
           setScannedProduct({
+            id: 55,
             name: 'Sprok maçã',
             brand: 'Irmão do jorel',
             price: 4.5,

@@ -16,8 +16,9 @@ import {bindActionCreators} from 'redux';
 // Actions
 
 import {hideModal} from '~/store/actions/scannedProductModal';
+import {newProduct} from '~/store/actions/shopCart';
 
-function ProductModal({modalVisible, hideModal, scannedProduct}) {
+function ProductModal({modalVisible, hideModal, scannedProduct, newProduct}) {
   return (
     <Portal>
       <Modal
@@ -61,7 +62,10 @@ function ProductModal({modalVisible, hideModal, scannedProduct}) {
             activeOpacity={false}
             style={{width: 140}}
             mode="contained"
-            onPress={() => hideModal()}>
+            onPress={() => {
+              hideModal();
+              newProduct(scannedProduct);
+            }}>
             Adicionar
           </Button>
 
@@ -84,7 +88,7 @@ const mapStateToProps = ({scannedProductModal}) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({hideModal}, dispatch);
+  bindActionCreators({hideModal, newProduct}, dispatch);
 
 export default connect(
   mapStateToProps,
