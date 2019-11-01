@@ -18,7 +18,13 @@ import {bindActionCreators} from 'redux';
 import {hideModal} from '~/store/actions/scannedProductModal';
 import {newProduct} from '~/store/actions/shopCart';
 
-function ProductModal({modalVisible, hideModal, scannedProduct, newProduct}) {
+function ProductModal({
+  modalVisible,
+  hideModal,
+  scannedProduct,
+  newProduct,
+  navigation,
+}) {
   return (
     <Portal>
       <Modal
@@ -65,6 +71,7 @@ function ProductModal({modalVisible, hideModal, scannedProduct, newProduct}) {
             onPress={() => {
               hideModal();
               newProduct(scannedProduct);
+              navigation.navigate('Products');
             }}>
             Adicionar
           </Button>

@@ -35,7 +35,6 @@ export default class BottomNavigator extends React.Component {
       <BottomNavigation
         style={{
           backgroundColor: 'white',
-          
         }}
         barStyle={{
           backgroundColor: 'white',

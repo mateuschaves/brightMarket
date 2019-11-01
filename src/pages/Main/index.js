@@ -13,10 +13,10 @@ import {connect} from 'react-redux';
 
 import {setScannedProduct} from '~/store/actions/scannedProductModal';
 
-function CameraScreen({setScannedProduct, modalVisible}) {
+function CameraScreen({setScannedProduct, modalVisible, navigation}) {
   return (
     <>
-      <Modal />
+      <Modal navigation={navigation} />
       <CameraKitCameraScreen
         flashImages={{
           on: require('../../../img/flashOn.png'),
@@ -28,17 +28,17 @@ function CameraScreen({setScannedProduct, modalVisible}) {
         laserColor={'blue'}
         surfaceColor={'black'}
         frameColor={'yellow'}
-        onReadCode={_ =>
+        onReadCode={_ => {
           !modalVisible &&
-          setScannedProduct({
-            id: 55,
-            name: 'Sprok maçã',
-            brand: 'Irmão do jorel',
-            price: 4.5,
-            category: 'Bebida',
-            amount: 1,
-          })
-        }
+            setScannedProduct({
+              id: 55,
+              name: 'Sprok maçã',
+              brand: 'Irmão do jorel',
+              price: 4.5,
+              category: 'Bebida',
+              amount: 1,
+            });
+        }}
         hideControls={false}
         colorForScannerFrame={'blue'}
       />

@@ -38,7 +38,7 @@ export default function shopCart(state = INITIAL_STATE, action) {
         price: getTotalCartShop(state.products),
       };
     case INCREMENT_AMOUNT_PRODUCT:
-      const newProducts = state.products.map(product => {
+      const newProductsIncremented = state.products.map(product => {
         if (product.id === action.payload.id) {
           product.amount++;
         }
@@ -46,11 +46,11 @@ export default function shopCart(state = INITIAL_STATE, action) {
       });
       return {
         ...state,
-        products: newProducts,
+        products: newProductsIncremented,
         price: getTotalCartShop(state.products),
       };
     case DECREMENT_AMOUNT_PRODUCT:
-      const newProducts = state.products.map(product => {
+      const newProductsDecremented = state.products.map(product => {
         if (product.id === action.payload.id) {
           product.amount--;
         }
@@ -58,7 +58,7 @@ export default function shopCart(state = INITIAL_STATE, action) {
       });
       return {
         ...state,
-        products: newProducts,
+        products: newProductsDecremented,
         price: getTotalCartShop(state.products),
       };
     case SET_TARGET_PRICE:
