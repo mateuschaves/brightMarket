@@ -1,16 +1,23 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {Modal, Portal, Button} from 'react-native-paper';
+
+// Componentes
 
 import ProductCard from '~/components/ProductCard';
 import Colors from '~/constants/Colors';
 
-export default function ProductModal({show}) {
-  const [visible, setVisible] = useState(show);
-  useEffect(() => {
-    setVisible(show);
-  }, [show]);
+// Redux
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+// Actions
+
+import {hideModal} from '~/store/actions/scannedProductModal';
+
+function ProductModal({modalVisible, hideModal}) {
   return (
     <Portal>
       <Modal
@@ -23,8 +30,8 @@ export default function ProductModal({show}) {
           zIndex: 5,
           borderRadius: 10,
         }}
-        visible={visible}
-        onDismiss={_ => setVisible(false)}>
+        visible={modalVisible}
+        onDismiss={_ => hideModal()}>
         <Text
           style={{
             textAlign: 'center',
@@ -54,7 +61,7 @@ export default function ProductModal({show}) {
             activeOpacity={false}
             style={{width: 140}}
             mode="contained"
-            onPress={() => setVisible(false)}>
+            onPress={() => hideModal()}>
             Adicionar
           </Button>
 
@@ -62,7 +69,7 @@ export default function ProductModal({show}) {
             activeOpacity={false}
             style={{width: 140}}
             mode="outlined"
-            onPress={() => setVisible(false)}>
+            onPress={() => hideModal()}>
             Cancelar
           </Button>
         </View>
@@ -70,3 +77,16 @@ export default function ProductModal({show}) {
     </Portal>
   );
 }
+
+const mapStateToProps = ({scannedProductModal}) => ({
+  scannedProduct: scannedProductModal.scannedProduct,
+  modalVisible: scannedProductModal.modalVisible,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({hideModal}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ProductModal);
