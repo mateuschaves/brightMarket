@@ -1,3 +1,11 @@
+import {
+  DECREMENT_AMOUNT_PRODUCT,
+  INCREMENT_AMOUNT_PRODUCT,
+  NEW_PRODUCT,
+  REMOVE_PRODUCT,
+  SET_TARGET_PRICE,
+} from '~/store/actions/shopCart';
+
 const INITIAL_STATE = {
   products: [],
   price: undefined,
@@ -13,14 +21,14 @@ function getTotalCartShop(products = []) {
 
 export default function shopCart(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'NEW_PRODUCT':
+    case NEW_PRODUCT:
       state.products.push(action.payload.product);
       return {
         ...state,
         product: state.products,
         price: getTotalCartShop(state.products),
       };
-    case 'REMOVE_PRODUCT':
+    case REMOVE_PRODUCT:
       const productsFiltered = state.products.filter(
         product => product.id !== action.id,
       );
@@ -29,7 +37,7 @@ export default function shopCart(state = INITIAL_STATE, action) {
         products: productsFiltered,
         price: getTotalCartShop(state.products),
       };
-    case 'INCREMENT_AMOUNT_PRODUCT':
+    case INCREMENT_AMOUNT_PRODUCT:
       const newProducts = state.products.map(product => {
         if (product.id === action.payload.id) {
           product.amount++;
@@ -41,7 +49,7 @@ export default function shopCart(state = INITIAL_STATE, action) {
         products: newProducts,
         price: getTotalCartShop(state.products),
       };
-    case 'DECREMENT_AMOUNT_PRODUCT':
+    case DECREMENT_AMOUNT_PRODUCT:
       const newProducts = state.products.map(product => {
         if (product.id === action.payload.id) {
           product.amount--;
@@ -53,7 +61,7 @@ export default function shopCart(state = INITIAL_STATE, action) {
         products: newProducts,
         price: getTotalCartShop(state.products),
       };
-    case 'SET_TARGET_PRICE':
+    case SET_TARGET_PRICE:
       return {
         ...state,
         targetPrice: action.payload.targetPrice,
