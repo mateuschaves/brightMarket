@@ -1,4 +1,7 @@
 import { combineReducers } from 'redux';
 
+import scannedProductModal from './scannedProductModal';
 
-export default combineReducers({});
+export default combineReducers({
+    scannedProductModal
+});

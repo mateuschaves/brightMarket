@@ -22,7 +22,6 @@ const INITIAL_STATE = {
             ...state,
             modalVisible: false
         };
-      
       default:
         return state;
     }
