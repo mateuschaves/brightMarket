@@ -6,13 +6,22 @@ import CamNavigation from '~/navigation/CamNavigation';
 import Profile from '~/pages/Profile';
 import Colors from '~/constants/Colors';
 
+// Redux
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+// Actions
+
+import {newScreen} from '~/store/actions/bottomNavigation';
+
 const CartScreen = () => <Products />;
 
 const ScannerScreen = () => <CamNavigation />;
 
 const ProfileScreen = () => <Profile />;
 
-export default class BottomNavigator extends React.Component {
+class BottomNavigator extends React.Component {
   state = {
     index: 0,
     routes: [
@@ -22,7 +31,10 @@ export default class BottomNavigator extends React.Component {
     ],
   };
 
-  _handleIndexChange = index => this.setState({index});
+  _handleIndexChange = index => {
+    this.props.newScreen(index);
+    this.setState({index: this.props.screen});
+  };
 
   _renderScene = BottomNavigation.SceneMap({
     cart: CartScreen,
@@ -47,3 +59,15 @@ export default class BottomNavigator extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({bottomNavigation}) => ({
+  screen: bottomNavigation.screen,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({newScreen}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(BottomNavigator);

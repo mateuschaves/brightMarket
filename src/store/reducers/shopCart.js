@@ -8,8 +8,8 @@ import {
 
 const INITIAL_STATE = {
   products: [],
-  price: undefined,
-  targetPrice: undefined,
+  price: 0,
+  targetPrice: 0,
 };
 
 function getTotalCartShop(products = []) {

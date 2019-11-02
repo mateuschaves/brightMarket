@@ -9,9 +9,26 @@ import LottieView from 'lottie-react-native';
 import {Placeholder, PlaceholderLine, Shine} from 'rn-placeholder';
 import {ScrollView} from 'react-native-gesture-handler';
 
+// Componentes
+
 import ProductSearch from '~/components/ProductSearch';
 import PurchaseSummary from '~/components/PurchaseSummary';
 import CheckouModal from '~/components/CheckouModal';
+
+// Redux
+
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+// Actions
+
+import {
+  decrementAmountProduct,
+  incrementAmountProduct,
+  newProduct,
+  removeProduct,
+  setTargetPrice,
+} from '~/store/actions/shopCart';
 
 const Loader = () => (
   <>
@@ -39,8 +56,16 @@ const Loader = () => (
   </>
 );
 
-export default function Products() {
-  const [products, setProducts] = useState([]);
+function Products({
+  setTargetPrice,
+  price,
+  newProduct,
+  removeProduct,
+  decrementAmountProduct,
+  incrementAmountProduct,
+  products,
+  targetPrice,
+}) {
   const [loading, setLoading] = useState(true);
   const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
   const [animationPosition, setAnimationPosition] = useState(0);
@@ -62,156 +87,6 @@ export default function Products() {
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
-    const itens = [
-      {
-        id: 1,
-        name: 'Sprok maçã',
-        brand: 'Irmão do jorel',
-        price: 4.5,
-        category: 'Bebida',
-      },
-      {
-        id: 2,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 3,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 4,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 5,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 6,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 7,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 8,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 9,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 10,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 11,
-        name: 'Sprok maçã',
-        brand: 'Irmão do jorel',
-        price: 4.5,
-        category: 'Bebida',
-      },
-      {
-        id: 12,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Abacate',
-        brand: 'Irmão do jorel',
-        price: 3.1,
-        category: 'Fruta',
-      },
-      {
-        id: 13,
-        name: 'Sprok maçã',
-        brand: 'Irmão do jorel',
-        price: 4.5,
-        category: 'Bebida',
-      },
-    ];
-    setProducts(itens);
   }, []);
 
   function renderProducts() {
@@ -285,9 +160,8 @@ export default function Products() {
     <View
       style={{
         flex: 1,
-        backgroundColor: !products.length
-          ? Colors.primary
-          : 'rgb(246, 246, 246)',
+        backgroundColor:
+          !products.length && !loading ? Colors.primary : 'rgb(246, 246, 246)',
       }}>
       <CheckouModal show={visible} />
       {products.length ? <ProductSearch /> : <></>}
@@ -336,6 +210,8 @@ export default function Products() {
           }}>
           {products.length && !loading ? (
             <PurchaseSummary
+              price={price}
+              targetPrice={targetPrice}
               icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
             />
           ) : (
@@ -348,3 +224,26 @@ export default function Products() {
     </View>
   );
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      removeProduct,
+      newProduct,
+      setTargetPrice,
+      incrementAmountProduct,
+      decrementAmountProduct,
+    },
+    dispatch,
+  );
+
+const mapStateToProps = ({shopCart}) => ({
+  products: shopCart.products,
+  price: shopCart.price,
+  targetPrice: shopCart.targetPrice,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Products);

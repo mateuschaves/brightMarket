@@ -17,6 +17,7 @@ import {bindActionCreators} from 'redux';
 
 import {hideModal} from '~/store/actions/scannedProductModal';
 import {newProduct} from '~/store/actions/shopCart';
+import {newScreen} from '~/store/actions/bottomNavigation';
 
 function ProductModal({
   modalVisible,
@@ -24,6 +25,7 @@ function ProductModal({
   scannedProduct,
   newProduct,
   navigation,
+  newScreen,
 }) {
   return (
     <Portal>
@@ -71,6 +73,7 @@ function ProductModal({
             onPress={() => {
               hideModal();
               newProduct(scannedProduct);
+              newScreen(0);
               navigation.navigate('Products');
             }}>
             Adicionar
@@ -95,7 +98,7 @@ const mapStateToProps = ({scannedProductModal}) => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({hideModal, newProduct}, dispatch);
+  bindActionCreators({hideModal, newProduct, newScreen}, dispatch);
 
 export default connect(
   mapStateToProps,

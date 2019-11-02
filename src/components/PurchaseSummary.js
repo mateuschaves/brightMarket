@@ -4,7 +4,7 @@ import {Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '~/constants/Colors';
 
-export default function PurchaseSummary(props) {
+export default function PurchaseSummary({icon, price, targetPrice}) {
   const [visible, setVisible] = useState(false);
   return (
     <View
@@ -22,12 +22,7 @@ export default function PurchaseSummary(props) {
           }}>
           Total
         </Text>
-        <Icon
-          name={props.icon}
-          color={'white'}
-          size={20}
-          style={{marginLeft: 40}}
-        />
+        <Icon name={icon} color={'white'} size={20} style={{marginLeft: 40}} />
         <Text
           style={{
             fontWeight: '700',
@@ -35,7 +30,7 @@ export default function PurchaseSummary(props) {
             color: 'white',
             marginRight: 15,
           }}>
-          R$ 157.87
+          R$ {price.toFixed(2)}
         </Text>
       </View>
 
@@ -50,7 +45,7 @@ export default function PurchaseSummary(props) {
         </Text>
 
         <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
-          R$ 201.50
+          R$ {targetPrice.toFixed(2)}
         </Text>
       </View>
       <View
@@ -65,7 +60,7 @@ export default function PurchaseSummary(props) {
         </Text>
 
         <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
-          R$ 43.63
+          R$ {(targetPrice - price).toFixed(2)}
         </Text>
       </View>
 
@@ -76,14 +71,12 @@ export default function PurchaseSummary(props) {
           marginLeft: '5%',
           borderColor: 'white',
           alignSelf: 'center',
-          borderWidth: 1
+          borderWidth: 1,
         }}
         activeOpacity={false}
         mode="outlined"
         onPress={() => setVisible(true)}>
-        <Text style={{color: 'white', fontWeight: '700'}}>
-          Finalizar
-        </Text>
+        <Text style={{color: 'white', fontWeight: '700'}}>Finalizar</Text>
       </Button>
     </View>
   );
