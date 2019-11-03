@@ -141,7 +141,7 @@ function Products({
             fontWeight: '400',
             color: 'white',
           }}>
-          Escaneie um código de barras para o produto aparecer aqui !
+          Escaneie um código de barras e o seu produto irá aparecer aqui!
         </Text>
         <LottieView
           style={{

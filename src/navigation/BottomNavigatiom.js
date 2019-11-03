@@ -31,8 +31,8 @@ class BottomNavigator extends React.Component {
     ],
   };
 
-  _handleIndexChange = index => {
-    this.props.newScreen(index);
+  _handleIndexChange = async index => {
+    await this.props.newScreen(index);
     this.setState({index: this.props.screen});
   };
 
