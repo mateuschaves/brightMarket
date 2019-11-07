@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import {BottomNavigation} from 'react-native-paper';
 import Products from '~/pages/Products';
 import CamNavigation from '~/navigation/CamNavigation';
@@ -21,43 +21,46 @@ const ScannerScreen = () => <CamNavigation />;
 
 const ProfileScreen = () => <Profile />;
 
-class BottomNavigator extends React.Component {
-  state = {
-    index: 0,
-    routes: [
-      {key: 'cart', title: 'Carrinho', icon: 'shopping-cart'},
-      {key: 'scanner', title: 'Escanear', icon: 'scanner'},
-      {key: 'profile', title: 'Perfil', icon: 'person'},
-    ],
-  };
+export function BottomNavigator(props) {
+  const [index, setIndex] = useState(0);
+  const [routes, setRoutes] = useState([
+    {key: 'cart', title: 'Carrinho', icon: 'shopping-cart'},
+    {key: 'scanner', title: 'Escanear', icon: 'scanner'},
+    {key: 'profile', title: 'Perfil', icon: 'person'},
+  ]);
 
-  _handleIndexChange = async index => {
-    await this.props.newScreen(index);
-    this.setState({index: this.props.screen});
-  };
+  useEffect(() => {
+    setIndex(props.screen);
+    alert(props.screen);
+  }, [props.screen]);
 
-  _renderScene = BottomNavigation.SceneMap({
-    cart: CartScreen,
-    scanner: ScannerScreen,
-    profile: ProfileScreen,
-  });
-
-  render() {
-    return (
-      <BottomNavigation
-        style={{
-          backgroundColor: 'white',
-        }}
-        barStyle={{
-          backgroundColor: 'white',
-        }}
-        activeColor={Colors.primary}
-        navigationState={this.state}
-        onIndexChange={this._handleIndexChange}
-        renderScene={this._renderScene}
-      />
-    );
+  async function handleIndexChange(s) {
+    await props.newScreen(s);
+    setIndex(s);
   }
+
+  function renderScene() {
+    return BottomNavigation.SceneMap({
+      cart: CartScreen,
+      scanner: ScannerScreen,
+      profile: ProfileScreen,
+    });
+  }
+
+  return (
+    <BottomNavigation
+      style={{
+        backgroundColor: 'white',
+      }}
+      barStyle={{
+        backgroundColor: 'white',
+      }}
+      activeColor={Colors.primary}
+      navigationState={{index, routes}}
+      onIndexChange={handleIndexChange}
+      renderScene={renderScene()}
+    />
+  );
 }
 
 const mapStateToProps = ({bottomNavigation}) => ({

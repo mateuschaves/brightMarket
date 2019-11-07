@@ -74,7 +74,6 @@ function ProductModal({
               hideModal();
               newProduct(scannedProduct);
               newScreen(0);
-              navigation.navigate('Products');
             }}>
             Adicionar
           </Button>
