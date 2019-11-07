@@ -31,7 +31,6 @@ export function BottomNavigator(props) {
 
   useEffect(() => {
     setIndex(props.screen);
-    alert(props.screen);
   }, [props.screen]);
 
   async function handleIndexChange(s) {
