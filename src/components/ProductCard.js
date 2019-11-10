@@ -8,6 +8,7 @@ import {
   Vibration,
   TouchableOpacity,
 } from 'react-native';
+
 import Swipeable from 'react-native-swipeable-row';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconAnt from 'react-native-vector-icons/AntDesign';
@@ -52,6 +53,9 @@ export default function ProductCard({
   price,
   brand,
   category,
+  id,
+  decrementAmountProduct,
+  incrementAmountProduct,
 }) {
   const [amount, setAmount] = useState(1);
 
@@ -141,6 +145,7 @@ export default function ProductCard({
                   if (amount == 1) {
                     Vibration.vibrate(50);
                   } else {
+                    decrementAmountProduct(id);
                     setAmount(amount - 1);
                   }
                 }}>
@@ -160,7 +165,11 @@ export default function ProductCard({
                 {amount}
               </Text>
 
-              <TouchableOpacity onPress={_ => setAmount(amount + 1)}>
+              <TouchableOpacity
+                onPress={_ => {
+                  setAmount(amount + 1);
+                  incrementAmountProduct(id);
+                }}>
                 <IconAnt
                   style={{
                     justifyContent: 'flex-start',

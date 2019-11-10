@@ -6,6 +6,8 @@ import {
   SET_TARGET_PRICE,
 } from '~/store/actions/shopCart';
 
+import Reactotron from 'reactotron-react-native';
+
 const INITIAL_STATE = {
   products: [],
   price: 0,
@@ -25,7 +27,7 @@ export default function shopCart(state = INITIAL_STATE, action) {
       state.products.push(action.payload.product);
       return {
         ...state,
-        product: state.products,
+        products: state.products,
         price: getTotalCartShop(state.products),
       };
     case REMOVE_PRODUCT:
@@ -41,8 +43,14 @@ export default function shopCart(state = INITIAL_STATE, action) {
       const newProductsIncremented = state.products.map(product => {
         if (product.id === action.payload.id) {
           product.amount++;
+          Reactotron.log(product);
         }
         return product;
+      });
+      Reactotron.log({
+        ...state,
+        products: newProductsIncremented,
+        price: getTotalCartShop(state.products),
       });
       return {
         ...state,

@@ -23,11 +23,11 @@ import {connect} from 'react-redux';
 // Actions
 
 import {
-  decrementAmountProduct,
-  incrementAmountProduct,
   newProduct,
-  removeProduct,
   setTargetPrice,
+  incrementAmountProduct,
+  decrementAmountProduct,
+  removeProduct,
 } from '~/store/actions/shopCart';
 
 const Loader = () => (
@@ -59,12 +59,11 @@ const Loader = () => (
 function Products({
   setTargetPrice,
   price,
-  newProduct,
-  removeProduct,
-  decrementAmountProduct,
-  incrementAmountProduct,
   products,
   targetPrice,
+  incrementAmountProduct,
+  decrementAmountProduct,
+  removeProduct,
 }) {
   const [loading, setLoading] = useState(true);
   const [heightSummary, setHeightSummary] = useState(new Animated.Value(40));
@@ -102,7 +101,10 @@ function Products({
               category={category}
               isSwipeable
               bounceOnMount={true}
-              key={index}
+              id={index}
+              removeProduct={removeProduct}
+              incrementAmountProduct={incrementAmountProduct}
+              decrementAmountProduct={decrementAmountProduct}
             />
           );
         } else {
@@ -113,7 +115,10 @@ function Products({
               price={price}
               category={category}
               isSwipeable
-              key={index}
+              id={index}
+              removeProduct={removeProduct}
+              incrementAmountProduct={incrementAmountProduct}
+              decrementAmountProduct={decrementAmountProduct}
             />
           );
         }
@@ -228,11 +233,11 @@ function Products({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      removeProduct,
       newProduct,
       setTargetPrice,
       incrementAmountProduct,
       decrementAmountProduct,
+      removeProduct,
     },
     dispatch,
   );

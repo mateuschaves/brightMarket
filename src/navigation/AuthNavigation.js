@@ -7,10 +7,20 @@ import Home from '~/pages/Login/home';
 import Planning from '~/pages/Planning';
 import CamNavigation from '~/navigation/CamNavigation';
 import BottomNavigatiom from '~/navigation/BottomNavigatiom';
+import ProductCard from '~/components/ProductCard';
 
 const Routes = createAppContainer(
   createSwitchNavigator(
-    {Email, Password, Name, Home, Planning, CamNavigation, BottomNavigatiom},
+    {
+      Email,
+      Password,
+      Name,
+      Home,
+      Planning,
+      CamNavigation,
+      BottomNavigatiom,
+      ProductCard,
+    },
     {initialRouteName: 'BottomNavigatiom', backBehavior: 'initialRoute'},
   ),
 );

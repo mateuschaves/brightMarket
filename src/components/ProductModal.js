@@ -24,7 +24,6 @@ function ProductModal({
   hideModal,
   scannedProduct,
   newProduct,
-  navigation,
   newScreen,
 }) {
   return (
