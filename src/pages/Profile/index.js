@@ -51,14 +51,18 @@ export default function profile() {
         Trocar foto
       </Button>
 
+      <Text style={{textAlign: 'center', margin: 15}}>
+        Estamos anciosos para te ver =)
+      </Text>
+
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           marginLeft: 50,
           marginRight: 50,
-          marginTop: 30,
-          marginBottom: 30,
+          marginTop: 15,
+          marginBottom: 15,
         }}>
         <View style={{alignContent: 'center', alignItems: 'center'}}>
           <Text style={{fontWeight: '700'}}>22</Text>
