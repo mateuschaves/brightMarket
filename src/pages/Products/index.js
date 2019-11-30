@@ -91,7 +91,7 @@ function Products({
   function renderProducts() {
     if (isArray(products)) {
       if (!products.length) return renderEmptyShop();
-      return products.map(({name, brand, price, category}, index) => {
+      return products.map(({name, brand, price, category, image}, index) => {
         if (index == 0) {
           return (
             <ProductCard
@@ -99,6 +99,7 @@ function Products({
               brand={brand}
               price={price}
               category={category}
+              image={image}
               isSwipeable
               bounceOnMount={true}
               id={index}
@@ -114,6 +115,7 @@ function Products({
               brand={brand}
               price={price}
               category={category}
+              image={image}
               isSwipeable
               id={index}
               removeProduct={removeProduct}

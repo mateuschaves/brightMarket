@@ -54,6 +54,7 @@ export default function ProductCard({
   brand,
   category,
   id,
+  image,
   decrementAmountProduct,
   incrementAmountProduct,
 }) {
@@ -95,8 +96,8 @@ export default function ProductCard({
               borderRightWidth: 0.3,
             }}>
             <Image
-              style={{width: 50, height: 50, marginLeft: 15, borderRadius: 90}}
-              source={{uri: 'https://picsum.photos/seed/picsum/200'}}
+              style={{width: 50, height: 50, marginLeft: 15, borderRadius: 90, resizeMode: 'stretch'}}
+              source={{uri: image}}
             />
           </View>
           <View
@@ -229,8 +230,8 @@ export default function ProductCard({
             borderRightWidth: 0.3,
           }}>
           <Image
-            style={{width: 50, height: 50, marginLeft: 15, borderRadius: 90}}
-            source={{uri: 'https://picsum.photos/seed/picsum/200'}}
+            style={{width: 50, height: 50, marginLeft: 15, borderRadius: 90, resizeMode: 'stretch'}}
+            source={{uri: image}}
           />
         </View>
         <View
