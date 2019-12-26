@@ -1,13 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useEffect} from 'react';
-import {View, StatusBar, Text, Animated, RefreshControl} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StatusBar, Text, Animated, RefreshControl } from 'react-native';
 
 import ProductCard from '../../components/ProductCard';
 import Colors from '../../constants/Colors';
-import {isArray} from 'is-what';
+import { isArray } from 'is-what';
 import LottieView from 'lottie-react-native';
-import {Placeholder, PlaceholderLine, Shine} from 'rn-placeholder';
-import {ScrollView} from 'react-native-gesture-handler';
+import { Placeholder, PlaceholderLine, Shine } from 'rn-placeholder';
+import { ScrollView } from 'react-native-gesture-handler';
 
 // Componentes
 
@@ -17,8 +17,8 @@ import CheckouModal from '~/components/CheckouModal';
 
 // Redux
 
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // Actions
 
@@ -32,24 +32,24 @@ import {
 
 const Loader = () => (
   <>
-    <Placeholder Animation={Shine} style={{left: 20, top: 30}}>
-      <View style={{flex: 1, flexDirection: 'row', width: 60}}>
+    <Placeholder Animation={Shine} style={{ left: 20, top: 30 }}>
+      <View style={{ flex: 1, flexDirection: 'row', width: 60 }}>
         <PlaceholderLine
           width={85}
           height={50}
-          style={{borderRadius: 90, margin: 10, backgroundColor: 'lightgrey'}}
+          style={{ borderRadius: 90, margin: 10, backgroundColor: 'lightgrey' }}
         />
         <PlaceholderLine
           width={400}
-          style={{marginTop: 10, backgroundColor: 'lightgrey'}}
+          style={{ marginTop: 10, backgroundColor: 'lightgrey' }}
         />
         <PlaceholderLine
           width={150}
-          style={{marginTop: 35, right: 240, backgroundColor: 'lightgrey'}}
+          style={{ marginTop: 35, right: 240, backgroundColor: 'lightgrey' }}
         />
         <PlaceholderLine
           width={150}
-          style={{marginTop: 35, right: 195, backgroundColor: 'lightgrey'}}
+          style={{ marginTop: 35, right: 195, backgroundColor: 'lightgrey' }}
         />
       </View>
     </Placeholder>
@@ -74,6 +74,7 @@ function Products({
 
   function wait(timeout) {
     return new Promise(resolve => {
+      setLoading(true);
       setTimeout(resolve, timeout);
     });
   }
@@ -81,7 +82,7 @@ function Products({
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    wait(2000).then(() => setRefreshing(false));
+    wait(2000).then(() => { setRefreshing(false); setLoading(false) });
   }, [refreshing]);
 
   useEffect(() => {
@@ -91,7 +92,7 @@ function Products({
   function renderProducts() {
     if (isArray(products)) {
       if (!products.length) return renderEmptyShop();
-      return products.map(({name, brand, price, category, image}, index) => {
+      return products.map(({ name, brand, price, category, image }, index) => {
         if (index == 0) {
           return (
             <ProductCard
@@ -102,7 +103,7 @@ function Products({
               image={image}
               isSwipeable
               bounceOnMount={true}
-              id={index}
+              id={index + 1}
               removeProduct={removeProduct}
               incrementAmountProduct={incrementAmountProduct}
               decrementAmountProduct={decrementAmountProduct}
@@ -117,7 +118,7 @@ function Products({
               category={category}
               image={image}
               isSwipeable
-              id={index}
+              id={index + 1}
               removeProduct={removeProduct}
               incrementAmountProduct={incrementAmountProduct}
               decrementAmountProduct={decrementAmountProduct}
@@ -130,7 +131,7 @@ function Products({
 
   function renderEmptyShop() {
     return (
-      <View style={{marginTop: 150}}>
+      <View style={{ marginTop: 150 }}>
         <Text
           style={{
             textAlign: 'center',
@@ -173,7 +174,7 @@ function Products({
       <CheckouModal show={visible} />
       {products.length ? <ProductSearch /> : <></>}
       {loading ? (
-        <View style={{flex: 1, justifyContent: 'space-between'}}>
+        <View style={{ flex: 1, justifyContent: 'space-between' }}>
           <Loader />
           <Loader />
           <Loader />
@@ -183,24 +184,26 @@ function Products({
           <Loader />
         </View>
       ) : (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              titleColor={Colors.primary}
-            />
-          }
-          style={{marginTop: 15, marginBottom: 0}}>
-          {products.length ? renderProducts() : renderEmptyShop()}
-        </ScrollView>
-      )}
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                titleColor={Colors.primary}
+              />
+            }
+            style={{ marginTop: 15, marginBottom: 0 }}>
+            {products.length ? renderProducts() : renderEmptyShop()}
+          </ScrollView>
+        )}
       <View
         onTouchStart={() => {
           setAnimationPosition(animationPosition ? 0 : 1);
           Animated.spring(heightSummary, {
             toValue: animationPosition ? 40 : 200,
             duration: 600,
+            bounciness: 10,
+            delay: 100
           }).start();
         }}>
         <Animated.View
@@ -222,8 +225,8 @@ function Products({
               icon={animationPosition ? 'ios-arrow-down' : 'ios-arrow-up'}
             />
           ) : (
-            <></>
-          )}
+              <></>
+            )}
         </Animated.View>
       </View>
 
@@ -244,7 +247,7 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-const mapStateToProps = ({shopCart}) => ({
+const mapStateToProps = ({ shopCart }) => ({
   products: shopCart.products,
   price: shopCart.price,
   targetPrice: shopCart.targetPrice,

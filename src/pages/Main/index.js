@@ -1,19 +1,19 @@
 import React from 'react';
-import {CameraKitCameraScreen} from 'react-native-camera-kit';
+import { CameraKitCameraScreen } from 'react-native-camera-kit';
 
 // Components
 import Modal from '~/components/ProductModal';
 
 // Redux
 
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // Actions
 
-import {setScannedProduct} from '~/store/actions/scannedProductModal';
+import { setScannedProduct } from '~/store/actions/scannedProductModal';
 
-function CameraScreen({setScannedProduct, modalVisible, navigation}) {
+function CameraScreen({ setScannedProduct, modalVisible, navigation }) {
   return (
     <>
       <Modal navigation={navigation} />
@@ -31,7 +31,7 @@ function CameraScreen({setScannedProduct, modalVisible, navigation}) {
         onReadCode={_ => {
           !modalVisible &&
             setScannedProduct({
-              id: 0,
+              id: 1,
               name: 'Sprok maçã',
               brand: 'Irmão do jorel',
               price: 4.5,
@@ -47,9 +47,9 @@ function CameraScreen({setScannedProduct, modalVisible, navigation}) {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({setScannedProduct}, dispatch);
+  bindActionCreators({ setScannedProduct }, dispatch);
 
-const mapStateToProps = ({scannedProductModal}) => ({
+const mapStateToProps = ({ scannedProductModal }) => ({
   modalVisible: scannedProductModal.modalVisible,
 });
 
