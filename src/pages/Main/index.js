@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { CameraKitCameraScreen } from 'react-native-camera-kit';
+import React, {useState} from 'react';
+import {CameraKitCameraScreen} from 'react-native-camera-kit';
+
+import {Alert} from 'react-native';
 
 // Components
 import Modal from '~/components/ProductModal';
@@ -7,35 +9,32 @@ import ProductNotRegisteredModal from '~/components/ProductNotRegisteredModal';
 
 // Redux
 
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 // Actions
 
-import { setScannedProduct } from '~/store/actions/scannedProductModal';
-import { showProductNotRegisteredModal } from '~/store/actions/productNotRegisteredModal';
-
+import {setScannedProduct} from '~/store/actions/scannedProductModal';
+import {showProductNotRegisteredModal} from '~/store/actions/productNotRegisteredModal';
+import {setBarCode} from '~/store/actions/barCode';
 
 import Spinner from 'react-native-loading-spinner-overlay';
 
-
-import Reactotron from 'reactotron-react-native'
-
-import api from '~/services/api'
+import api from '~/services/api';
 
 function CameraScreen({
   setScannedProduct,
   modalVisible,
   navigation,
-  showProductNotRegisteredModal
+  showProductNotRegisteredModal,
+  setBarCode,
 }) {
-
   const [loading, setLoading] = useState(false);
 
   async function loadProductScanned(code) {
     setLoading(true);
     try {
-      const { data } = await api.get(`/product/${code}`);
+      const {data} = await api.get(`/product/${code}`);
       if (data.productRegistered) {
         setScannedProduct({
           id: 1,
@@ -46,14 +45,14 @@ function CameraScreen({
           amount: 1,
         });
       } else {
-        showProductNotRegisteredModal();
+        setBarCode(code);
       }
     } catch (error) {
-
+      showProductNotRegisteredModal();
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
-
 
   return (
     <>
@@ -61,23 +60,24 @@ function CameraScreen({
         visible={loading}
         textContent={'Carregando...'}
         textStyle={{
-          color: '#FFF'
+          color: '#FFF',
         }}
       />
       <Modal navigation={navigation} />
-      <ProductNotRegisteredModal />
+      <ProductNotRegisteredModal navigation={navigation} />
       <CameraKitCameraScreen
         flashImages={{
           on: require('../../../img/flashOn.png'),
           off: require('../../../img/flashOff.png'),
           auto: require('../../../img/flashAuto.png'),
         }}
-        showFrame={true}
         scanBarcode={true}
         laserColor={'blue'}
         surfaceColor={'black'}
         frameColor={'yellow'}
-        onReadCode={event => !modalVisible && loadProductScanned(event.nativeEvent.codeStringValue)}
+        onReadCode={(event) =>
+          !modalVisible && loadProductScanned(event.nativeEvent.codeStringValue)
+        }
         hideControls={false}
         colorForScannerFrame={'blue'}
       />
@@ -85,17 +85,18 @@ function CameraScreen({
   );
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    setScannedProduct,
-    showProductNotRegisteredModal
-  }, dispatch);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      setScannedProduct,
+      showProductNotRegisteredModal,
+      setBarCode,
+    },
+    dispatch,
+  );
 
-const mapStateToProps = ({ scannedProductModal }) => ({
+const mapStateToProps = ({scannedProductModal}) => ({
   modalVisible: scannedProductModal.modalVisible,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CameraScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(CameraScreen);

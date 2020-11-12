@@ -10,6 +10,7 @@ import Colors from './constants/Colors';
 
 // import BottomNavigatiom from '~/navigation/BottomNavigatiom';
 import AuthNavigation from '~/navigation/AuthNavigation';
+import NavigationService from '~/navigation/NavigationService';
 
 import OneSignal from 'react-native-onesignal';
 
@@ -42,15 +43,15 @@ export default class App extends Component {
     OneSignal.removeEventListener('ids', this.onIds);
   }
 
-  onReceived = data => {
+  onReceived = (data) => {
     console.log(data);
   };
 
-  onOpened = notification => {
+  onOpened = (notification) => {
     console.log(notification);
   };
 
-  onIds = id => {
+  onIds = (id) => {
     console.log(id);
   };
 
@@ -58,7 +59,11 @@ export default class App extends Component {
     return (
       <PaperProvider theme={theme}>
         <Provider store={store}>
-          <AuthNavigation />
+          <AuthNavigation
+            ref={(navigatorRef) => {
+              NavigationService.setTopLevelNavigator(navigatorRef);
+            }}
+          />
         </Provider>
       </PaperProvider>
     );

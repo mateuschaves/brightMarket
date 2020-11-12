@@ -30,7 +30,7 @@
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.7",
     "react-navigation-material-bottom-tabs": "^2.1.2",
-    "react-redux": "^7.1.1",
+    "react-redux": "^7.1.0-rc.1",
     "reactotron-react-native": "^4.0.0",
     "reactotron-redux": "^3.1.2",
     "reactotron-redux-saga": "^4.2.2",
