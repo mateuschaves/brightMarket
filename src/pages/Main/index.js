@@ -35,19 +35,17 @@ function CameraScreen({
     setLoading(true);
     try {
       const {data} = await api.get(`/product/${code}`);
-      if (data.productRegistered) {
-        setScannedProduct({
-          id: 1,
-          name: 'Sprok maçã',
-          brand: 'Irmão do jorel',
-          price: 4.5,
-          category: 'Bebida',
-          amount: 1,
-        });
-      } else {
-        setBarCode(code);
-      }
+      setScannedProduct({
+        id: data.id,
+        name: data.name,
+        brand: data.description,
+        price: Number(data.price),
+        category: 'Test',
+        amount: 1,
+      });
     } catch (error) {
+      console.log(error);
+      setBarCode(code);
       showProductNotRegisteredModal();
     } finally {
       setLoading(false);
